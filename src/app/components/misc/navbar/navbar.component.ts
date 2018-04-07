@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { User } from '../../../shared/model/user.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  user: User;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
