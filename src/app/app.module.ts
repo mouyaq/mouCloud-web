@@ -6,12 +6,14 @@ import './rxjs.operators';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/misc/navbar/navbar.component';
+import { LoginComponent } from './components/misc/login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     NgbModule.forRoot(),
