@@ -12,13 +12,15 @@ import { NavbarComponent } from './components/misc/navbar/navbar.component';
 import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     NgbModule.forRoot(),
