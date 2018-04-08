@@ -2,14 +2,14 @@
   <h2>Login</h2>
   <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
     <div class="form-group">
-      <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
+      <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username" [(ngModel)]="user.username" name="username" required>
       <!--<small id="usernameHelp" class="form-text text-muted">Default: administrator@moulab.es</small>-->
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="password" placeholder="Password">
+      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
     </div>
     <div class="form-group">
-      <button type="submit" class="form-button btn btn-block btn-primary">Login</button>
+      <button type="submit" class="form-button btn btn-block btn-primary" [disabled]="!loginForm.valid">Login</button>
     </div>
   </form>
 </div>

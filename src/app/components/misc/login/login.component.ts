@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   onSubmitLogin(loginForm) {
     this.sessionService.authenticate(this.user).subscribe(
       (user) => {
+        console.log(user);
         loginForm.reset();
         this.router.navigate(['/dashboard'])
       },
