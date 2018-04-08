@@ -22,11 +22,10 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(loginForm) {
     this.sessionService.authenticate(this.user).subscribe(
-      (token) => {
+      (user) => {
+        // Once we received the response we don't need the password anymore
         delete this.user.password;
-        console.log(token);
-        this.user.token = token.value;
-        console.log(this.user);
+        this.user = user;
         loginForm.reset();
         this.router.navigate(['/dashboard']);
       },
