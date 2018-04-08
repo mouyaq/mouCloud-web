@@ -6,7 +6,6 @@
 }
 
 .form-login {
-    background-color: lightgray;
     border-radius: 5px;
     margin: 0 auto;
     text-align: center;
@@ -31,7 +30,6 @@ img {
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { 
     .form-login {
-        background-color: lightgray;
         margin-top: 50px;
         width: 300px;
     }
