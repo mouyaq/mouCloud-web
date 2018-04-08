@@ -22,10 +22,13 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(loginForm) {
     this.sessionService.authenticate(this.user).subscribe(
-      (user) => {
-        console.log(user);
+      (token) => {
+        delete this.user.password;
+        console.log(token);
+        this.user.token = token.value;
+        console.log(this.user);
         loginForm.reset();
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         this.apiError = error.message;
