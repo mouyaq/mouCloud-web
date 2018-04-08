@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseApi: 'http://mean.moulab.es:3000/api'
+  baseApi: 'https://mean.moulab.es:3443/api'
 };
