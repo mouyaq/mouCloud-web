@@ -46,4 +46,23 @@ export class SessionService extends BaseApiService {
     return this.userSubject.asObservable();
   }
 
+  logout(): Observable<void> {
+    BaseApiService.defaultOptions.headers.append('Set-Cookie', this.user.cookie);
+    return this.http.delete(SessionService.SESSION_API, BaseApiService.defaultOptions)
+      .map(res => {
+        return this.doLogout();
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  protected doLogout(): void {
+    this.user = null;
+    localStorage.removeItem(CURRENT_USER_KEY);
+    this.notifyUserChanges();
+  }
+
+  isAuthenticated(): boolean {
+    return this.user ? true : false;
+  }
+
 }

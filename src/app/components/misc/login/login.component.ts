@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     this.sessionService.authenticate(this.user).subscribe(
       (user) => {
         // Once we received the response we don't need the password anymore
+        console.log(user);
         delete this.user.password;
         this.user = user;
         loginForm.reset();
