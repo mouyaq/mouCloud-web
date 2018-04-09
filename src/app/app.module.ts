@@ -13,6 +13,7 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
 
 
 @NgModule({
@@ -29,7 +30,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [SessionService],
+  providers: [
+    SessionService,
+    IsAuthenticatedGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
