@@ -29,6 +29,7 @@ export class SessionService extends BaseApiService {
 
   private doAuthentication(user: User): User {
     this.user = user;
+    BaseApiService.defaultOptions.headers.append('Set-Cookie', this.user.cookie);
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(this.user));
     this.notifyUserChanges();
     return this.user;
@@ -47,7 +48,6 @@ export class SessionService extends BaseApiService {
   }
 
   logout(): Observable<void> {
-    BaseApiService.defaultOptions.headers.append('Set-Cookie', this.user.cookie);
     return this.http.delete(SessionService.SESSION_API, BaseApiService.defaultOptions)
       .map(res => {
         return this.doLogout();
@@ -57,6 +57,7 @@ export class SessionService extends BaseApiService {
 
   protected doLogout(): void {
     this.user = null;
+    BaseApiService.defaultOptions.headers.delete('Set-Cookie');
     localStorage.removeItem(CURRENT_USER_KEY);
     this.notifyUserChanges();
   }
