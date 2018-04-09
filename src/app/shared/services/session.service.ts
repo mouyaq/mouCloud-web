@@ -38,4 +38,12 @@ export class SessionService extends BaseApiService {
     this.userSubject.next(this.user);
   }
 
+  getUser(): User {
+    return this.user;
+  }
+
+  onUserChanges(): Observable<User> {
+    return this.userSubject.asObservable();
+  }
+
 }
