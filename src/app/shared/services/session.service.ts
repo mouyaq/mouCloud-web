@@ -62,7 +62,6 @@ export class SessionService extends BaseApiService {
   }
 
   isAuthenticated(): boolean {
-    console.log("USER: " + this.user);
     return this.user ? true : false;
   }
 
