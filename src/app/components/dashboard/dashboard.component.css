@@ -1,9 +1,25 @@
-one {
+.dash-header {
+    background-color: yellow;
+    border: 1px solid white;
+    height: 50px;
+
+}
+
+.dash-footer {
+    background-color: cyan;
+    border: 1px solid white;
+    height: 100px;
+   
+}
+
+.dash-left {
     background-color: red;
+    border: 1px solid white;
     height: 600px;
 }
 
-two {
+.dash-main {
     background-color: blue;
+    border: 1px solid white;
     height: 600px;
 }
