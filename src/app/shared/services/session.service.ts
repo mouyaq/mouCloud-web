@@ -29,7 +29,6 @@ export class SessionService extends BaseApiService {
 
   private doAuthentication(user: User): User {
     this.user = user;
-    //BaseApiService.defaultOptions.headers.append('Set-Cookie', this.user.cookie);
     sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(this.user));
     this.notifyUserChanges();
     return this.user;
@@ -48,15 +47,8 @@ export class SessionService extends BaseApiService {
   }
 
   logout(): Observable<void> {
-    // let headers = new Headers();
-    // headers.append('content-type', 'application/json');
-    // headers.append('vmware-api-session-id', this.user.token);
-    // let opts = new RequestOptions({withCredentials: true});
-    // opts.headers = headers;
     BaseApiService.defaultOptions.headers.append('vmware-api-session-id', this.user.token);
-    // console.log(BaseApiService.defaultOptions);
     return this.http.delete(SessionService.SESSION_API, BaseApiService.defaultOptions)
-    // return this.http.delete(SessionService.SESSION_API, opts)
       .map(res => {
         return this.doLogout();
       })
@@ -64,7 +56,6 @@ export class SessionService extends BaseApiService {
   }
 
   protected doLogout(): void {
-    // BaseApiService.defaultOptions.headers.delete('Set-Cookie');
     BaseApiService.defaultOptions.headers.delete('vmware-api-session-id');
     sessionStorage.removeItem(CURRENT_USER_KEY);
     this.user = null;
