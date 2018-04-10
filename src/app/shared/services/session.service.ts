@@ -65,6 +65,7 @@ export class SessionService extends BaseApiService {
 
   protected doLogout(): void {
     // BaseApiService.defaultOptions.headers.delete('Set-Cookie');
+    BaseApiService.defaultOptions.headers.delete('vmware-api-session-id');
     sessionStorage.removeItem(CURRENT_USER_KEY);
     this.user = null;
     this.notifyUserChanges();
