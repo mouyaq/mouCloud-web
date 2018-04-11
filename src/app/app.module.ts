@@ -13,6 +13,8 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { VmsComponent } from './components/dashboard/vms/vms.component';
+import { HeaderComponent } from './components/dashboard/header/header.component';
 import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
 
 
@@ -21,7 +23,9 @@ import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    VmsComponent,
+    HeaderComponent
   ],
   imports: [
     NgbModule.forRoot(),
