@@ -1,3 +1,4 @@
+import { VmsService } from './shared/services/vms.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,9 +14,10 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { VmsComponent } from './components/dashboard/vms/vms.component';
+import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
 import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
+import { InventoryService } from './shared/services/inventory.service';
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    VmsComponent,
+    InventoryComponent,
     HeaderComponent
   ],
   imports: [
@@ -36,6 +38,8 @@ import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
   ],
   providers: [
     SessionService,
+    InventoryService,
+    VmsService,
     IsAuthenticatedGuard
   ],
   bootstrap: [AppComponent]
