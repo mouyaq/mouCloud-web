@@ -1,3 +1,4 @@
+import { HostService } from './shared/services/host.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,7 +22,8 @@ import { VmService } from './shared/services/vm.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MainComponent } from './components/dashboard/main/main.component';
-import { VmComponent } from './components/dashboard/vm/vm.component';
+import { VmComponent } from './components/dashboard/main/vm/vm.component';
+import { HostComponent } from './components/dashboard/main/host/host.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { VmComponent } from './components/dashboard/vm/vm.component';
     InventoryComponent,
     HeaderComponent,
     MainComponent,
-    VmComponent
+    VmComponent,
+    HostComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -51,6 +54,7 @@ import { VmComponent } from './components/dashboard/vm/vm.component';
     SessionService,
     InventoryService,
     VmService,
+    HostService,
     IsAuthenticatedGuard
   ],
   bootstrap: [AppComponent]

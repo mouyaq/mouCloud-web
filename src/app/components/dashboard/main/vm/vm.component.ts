@@ -1,7 +1,7 @@
-import { VmService } from './../../../shared/services/vm.service';
+import { VmService } from './../../../../shared/services/vm.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Vm } from '../../../shared/model/vm.model';
+import { Vm } from './../../../../shared/model/vm.model';
 
 @Component({
   selector: 'app-vm',

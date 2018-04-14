@@ -1,6 +1,5 @@
 import { Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-import { User } from './../model/user.model';
 import { Observable } from 'rxjs/Observable';
 import { BaseApiService } from './base-api.service';
 import { SessionService } from './session.service';
@@ -9,8 +8,7 @@ import { Vm } from '../model/vm.model';
 
 @Injectable()
 export class VmService extends BaseApiService {
-  protected static readonly VMS_API = `${BaseApiService.BASE_API}/vm`;
-  private user: User;
+  protected static readonly VM_API = `${BaseApiService.BASE_API}/vm`;
 
   constructor(
     private http: HttpClient,
@@ -20,7 +18,7 @@ export class VmService extends BaseApiService {
 
 
   list(): Observable<Array<Vm>> {
-    return this.http.get(VmService.VMS_API)
+    return this.http.get(VmService.VM_API)
       .catch(error => this.handleError(error));
   }
 

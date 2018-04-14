@@ -1,3 +1,18 @@
+<h5>HOSTS</h5>
+<ul>
+  <li *ngFor="let host of hosts">
+    <div class="vm-container">
+      <div class="host-icon">
+          <img class="{{ host.power_state }}"/>
+      </div>
+      <div class="host-link">
+          <a [routerLink]="['host', host.host]">{{ host.name }}</a> 
+      </div>
+    </div>
+  </li> 
+</ul>
+
+<h5>VMS</h5>
 <ul>
   <li *ngFor="let vm of vms">
     <div class="vm-container">

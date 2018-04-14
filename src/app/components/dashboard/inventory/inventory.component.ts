@@ -1,3 +1,5 @@
+import { Host } from './../../../shared/model/host.model';
+import { HostService } from './../../../shared/services/host.service';
 import { Vm } from './../../../shared/model/vm.model';
 import { VmService } from './../../../shared/services/vm.service';
 import { SessionService } from './../../../shared/services/session.service';
@@ -10,10 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InventoryComponent implements OnInit {
   vms: Array<Vm> = [];
+  hosts: Array<Host> = [];
 
   constructor(
     private sessionService: SessionService,
-    private vmService: VmService
+    private vmService: VmService,
+    private hostService: HostService
   ) { }
 
   ngOnInit() {
@@ -22,6 +26,12 @@ export class InventoryComponent implements OnInit {
         this.vms = vms;
       }
     );
+
+    this.hostService.list().subscribe(
+      (hosts) => {
+        this.hosts = hosts;
+      }
+    )
   }
 
 }
