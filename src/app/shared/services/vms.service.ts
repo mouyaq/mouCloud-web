@@ -23,7 +23,6 @@ export class VmsService extends BaseApiService {
     // this.options.headers.append('vmware-api-session-id', this.user.token);
     return this.http.get(VmsService.VMS_API)
       .map((res: Response) => {
-        console.log(res.json());
           return res.json();
         })
       .catch(error => this.handleError(error));
