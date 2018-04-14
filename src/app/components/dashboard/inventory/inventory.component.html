@@ -1,11 +1,15 @@
-<!-- <ul>
+<ul>
   <li *ngFor="let vm of vms">
-    <div>
-      <img class="image-replacement"/>
-      <a href="#">{{ vm.name }}</a> 
+    <div class="vm-container">
+      <div class="vm-icon">
+          <img class="{{ vm.power_state }}"/>
+      </div>
+      <div class="vm-link">
+          <a [routerLink]="['vm', vm.vm]">{{ vm.name }}</a> 
+      </div>
     </div>
   </li> 
-</ul> -->
+</ul>
 
 
 

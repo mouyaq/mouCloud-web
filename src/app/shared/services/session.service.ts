@@ -10,7 +10,6 @@ const CURRENT_USER_KEY = 'currentUser';
 
 @Injectable()
 export class SessionService extends BaseApiService {
-  // protected static readonly SESSION_API = 'http://localhost:3000/api/session';
   protected static readonly SESSION_API = `${BaseApiService.BASE_API}/session`;
 
   private user: User;
@@ -23,18 +22,15 @@ export class SessionService extends BaseApiService {
   }
 
   authenticate(user: User): Observable<User> {
-    console.log(user);
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<User>(SessionService.SESSION_API, JSON.stringify(user), {headers: headers, withCredentials: true})
       .map(res => {
-        console.log(res);
         return this.doAuthentication(<User>res);
       })
       .catch(error => this.handleError(error));
   }
 
   getToken(): string {
-    console.log("GETTOKEN");
     if (this.user) {
       return this.user.token; 
     }

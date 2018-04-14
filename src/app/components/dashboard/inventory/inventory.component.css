@@ -1,34 +1,28 @@
-.POWERED_OFF {
-    content:url("/assets/icons/vm/vm-off-256.png");
-}
-
-.POWERED_ON {
-    content:url("/assets/icons/vm/vm-on-256.png");
-}
-
-img { 
-    background: url("/assets/icons/vm/vm-off-256.png");
-    /* float: left; */
+/* .POWERED_OFF {
+    border: 2px solid green;
     height: 50px;
     width: 50px;
-}
+    content: url("/assets/icons/vm/vm-off-256.png");
+} */
 
-/* 
-.image-replacement {
-    display: block;
+/* .POWERED_ON {
+    background: url("/assets/icons/vm/vm-on-256.png") no-repeat;
+} */
+
+/* img { 
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    background: url("/assets/icons/vm/vm-off-256.png") no-repeat; 
-    width: 100%;
-    height: auto;
-}   */
+    width: 50px;
+    height: 50px;
+} */
 
-li {
-    display: flex;
+
+/* li {
+    border: 1px solid black;
     margin: 0 auto;
     background-color: lightpink;
     width: 100%;
-}
+} */
 
 ul {
     padding: 0;
@@ -36,9 +30,28 @@ ul {
     width: 100%;
 }
 
-.vm {
+/* .vm {
     background-color: lightpink;
     margin: 5px;
     height: 50px;
     width: 200px;
-}
+} */
+
+/* .vm-container {
+    border: 1px solid red;
+    width: 50px;
+    height: 50px;
+} */
+
+/* .vm-img {
+    background-size: 100% 100%;
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    float: left;
+} */
+
+/* .vm-link {
+    border: 1px solid blue;
+    float: left;
+} */

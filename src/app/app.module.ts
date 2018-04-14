@@ -13,14 +13,15 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-// import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
+import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
 import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
-// import { InventoryService } from './shared/services/inventory.service';
-// import { VmsService } from './shared/services/vms.service';
+import { InventoryService } from './shared/services/inventory.service';
+import { VmsService } from './shared/services/vms.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-
+import { MainComponent } from './components/dashboard/main/main.component';
+import { VmComponent } from './components/dashboard/vm/vm.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,10 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    //InventoryComponent,
-    HeaderComponent
+    InventoryComponent,
+    HeaderComponent,
+    MainComponent,
+    VmComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -46,8 +49,8 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
       multi: true
     },
     SessionService,
-    //InventoryService,
-    // VmsService,
+    InventoryService,
+    VmsService,
     IsAuthenticatedGuard
   ],
   bootstrap: [AppComponent]
