@@ -1,4 +1,4 @@
-import { VmsService } from './../../../shared/services/vms.service';
+import { VmService } from './../../../shared/services/vm.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Vm } from '../../../shared/model/vm.model';
@@ -15,7 +15,7 @@ export class VmComponent implements OnInit {
   constructor(
     private router: Router,
     private routes: ActivatedRoute,
-    private vmsService: VmsService
+    private vmService: VmService
   ) { }
 
   ngOnInit() {

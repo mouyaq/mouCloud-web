@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { VmsService } from './vms.service';
+import { VmService } from './vm.service';
 
 @Injectable()
 export class InventoryService {
 
-  constructor(private vms: VmsService) { }
+  constructor(private vm: VmService) { }
 
 }

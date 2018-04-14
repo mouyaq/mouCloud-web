@@ -17,7 +17,7 @@ import { InventoryComponent } from './components/dashboard/inventory/inventory.c
 import { HeaderComponent } from './components/dashboard/header/header.component';
 import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
 import { InventoryService } from './shared/services/inventory.service';
-import { VmsService } from './shared/services/vms.service';
+import { VmService } from './shared/services/vm.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MainComponent } from './components/dashboard/main/main.component';
@@ -50,7 +50,7 @@ import { VmComponent } from './components/dashboard/vm/vm.component';
     },
     SessionService,
     InventoryService,
-    VmsService,
+    VmService,
     IsAuthenticatedGuard
   ],
   bootstrap: [AppComponent]

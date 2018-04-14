@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Vm } from '../model/vm.model';
 
 @Injectable()
-export class VmsService extends BaseApiService {
+export class VmService extends BaseApiService {
   protected static readonly VMS_API = `${BaseApiService.BASE_API}/vm`;
   private user: User;
 
@@ -20,7 +20,7 @@ export class VmsService extends BaseApiService {
 
 
   list(): Observable<Array<Vm>> {
-    return this.http.get(VmsService.VMS_API)
+    return this.http.get(VmService.VMS_API)
       .catch(error => this.handleError(error));
   }
 

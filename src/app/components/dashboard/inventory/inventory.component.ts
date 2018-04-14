@@ -1,5 +1,5 @@
 import { Vm } from './../../../shared/model/vm.model';
-import { VmsService } from './../../../shared/services/vms.service';
+import { VmService } from './../../../shared/services/vm.service';
 import { SessionService } from './../../../shared/services/session.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,11 +13,11 @@ export class InventoryComponent implements OnInit {
 
   constructor(
     private sessionService: SessionService,
-    private vmsService: VmsService
+    private vmService: VmService
   ) { }
 
   ngOnInit() {
-    this.vmsService.list().subscribe(
+    this.vmService.list().subscribe(
       (vms) => {
         this.vms = vms;
       }
