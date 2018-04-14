@@ -1,31 +1,65 @@
-import { Observable, Subject } from 'rxjs/Rx';
-import { User } from './../model/user.model';
 import { BaseApiService } from './base-api.service';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Rx';
+import { User } from './../model/user.model';
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 const CURRENT_USER_KEY = 'currentUser';
 
 @Injectable()
 export class SessionService extends BaseApiService {
+  // protected static readonly SESSION_API = 'http://localhost:3000/api/session';
   protected static readonly SESSION_API = `${BaseApiService.BASE_API}/session`;
 
   private user: User;
   private userSubject: Subject<User> = new Subject();
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     super();
     this.user = JSON.parse(sessionStorage.getItem(CURRENT_USER_KEY));
     this.notifyUserChanges();
   }
 
   authenticate(user: User): Observable<User> {
-    return this.http.post(SessionService.SESSION_API, JSON.stringify(user), BaseApiService.defaultOptions)
+    console.log(user);
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post<User>(SessionService.SESSION_API, JSON.stringify(user), {headers: headers, withCredentials: true})
       .map(res => {
-        return this.doAuthentication(res.json());
+        console.log(res);
+        return this.doAuthentication(<User>res);
       })
       .catch(error => this.handleError(error));
   }
+
+  getToken(): string {
+    console.log("GETTOKEN");
+    if (this.user) {
+      return this.user.token; 
+    }
+  }
+
+  getUser(): User {
+    return this.user;
+  }
+
+  isAuthenticated(): boolean {
+    return this.user ? true : false;
+  }
+
+  logout(): Observable<void> {
+    return this.http.delete(SessionService.SESSION_API)
+      .map(res => {
+        return this.doLogout();
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  onUserChanges(): Observable<User> {
+    return this.userSubject.asObservable();
+  }
+
 
   private doAuthentication(user: User): User {
     this.user = user;
@@ -34,36 +68,14 @@ export class SessionService extends BaseApiService {
     return this.user;
   }
 
-  private notifyUserChanges() {
-    this.userSubject.next(this.user);
-  }
-
-  getUser(): User {
-    return this.user;
-  }
-
-  onUserChanges(): Observable<User> {
-    return this.userSubject.asObservable();
-  }
-
-  logout(): Observable<void> {
-    BaseApiService.defaultOptions.headers.append('vmware-api-session-id', this.user.token);
-    return this.http.delete(SessionService.SESSION_API, BaseApiService.defaultOptions)
-      .map(res => {
-        return this.doLogout();
-      })
-      .catch(error => this.handleError(error));
-  }
-
-  protected doLogout(): void {
-    BaseApiService.defaultOptions.headers.delete('vmware-api-session-id');
-    sessionStorage.removeItem(CURRENT_USER_KEY);
+  private doLogout(): void {
     this.user = null;
+    sessionStorage.removeItem(CURRENT_USER_KEY);
     this.notifyUserChanges();
   }
 
-  isAuthenticated(): boolean {
-    return this.user ? true : false;
+  private notifyUserChanges(): void {
+    this.userSubject.next(this.user);
   }
 
 }

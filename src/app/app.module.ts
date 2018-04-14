@@ -1,4 +1,3 @@
-import { VmsService } from './shared/services/vms.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,10 +13,13 @@ import { LoginComponent } from './components/misc/login/login.component';
 import { SessionService } from './shared/services/session.service';
 import { routes } from './app.routes';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
+// import { InventoryComponent } from './components/dashboard/inventory/inventory.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
 import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
-import { InventoryService } from './shared/services/inventory.service';
+// import { InventoryService } from './shared/services/inventory.service';
+// import { VmsService } from './shared/services/vms.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 
 @NgModule({
@@ -26,7 +28,7 @@ import { InventoryService } from './shared/services/inventory.service';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    InventoryComponent,
+    //InventoryComponent,
     HeaderComponent
   ],
   imports: [
@@ -34,12 +36,18 @@ import { InventoryService } from './shared/services/inventory.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     SessionService,
-    InventoryService,
-    VmsService,
+    //InventoryService,
+    // VmsService,
     IsAuthenticatedGuard
   ],
   bootstrap: [AppComponent]

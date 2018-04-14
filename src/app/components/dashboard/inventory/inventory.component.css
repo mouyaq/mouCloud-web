@@ -1,0 +1,44 @@
+.POWERED_OFF {
+    content:url("/assets/icons/vm/vm-off-256.png");
+}
+
+.POWERED_ON {
+    content:url("/assets/icons/vm/vm-on-256.png");
+}
+
+img { 
+    background: url("/assets/icons/vm/vm-off-256.png");
+    /* float: left; */
+    height: 50px;
+    width: 50px;
+}
+
+/* 
+.image-replacement {
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url("/assets/icons/vm/vm-off-256.png") no-repeat; 
+    width: 100%;
+    height: auto;
+}   */
+
+li {
+    display: flex;
+    margin: 0 auto;
+    background-color: lightpink;
+    width: 100%;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+}
+
+.vm {
+    background-color: lightpink;
+    margin: 5px;
+    height: 50px;
+    width: 200px;
+}

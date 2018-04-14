@@ -22,17 +22,16 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(loginForm) {
     this.sessionService.authenticate(this.user).subscribe(
-      (user) => {
+      () => {
         // Once we received the response we don't need the password anymore
         delete this.user.password;
-        //this.user = user; --> da problemas
         loginForm.reset();
         this.router.navigate(['/dashboard']);
       },
       (error) => {
         this.apiError = error.message;
       }
-    )
+    );
   }
 
 }
