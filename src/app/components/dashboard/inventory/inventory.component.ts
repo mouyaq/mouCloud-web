@@ -19,7 +19,7 @@ export class InventoryComponent implements OnInit {
   ngOnInit() {
     this.vmsService.list().subscribe(
       (vms) => {
-        this.vms = vms;
+        this.vms = vms.value;
       }
     );
   }

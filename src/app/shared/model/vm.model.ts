@@ -9,7 +9,6 @@ export class Vm {
         hot_add_enabled?: boolean
     };
 
-
 }
 
 
