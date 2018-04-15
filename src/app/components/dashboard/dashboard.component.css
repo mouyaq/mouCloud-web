@@ -3,37 +3,35 @@
 
 .dash-header {
     background-color: yellow;
-    border: 1px solid white;
-    height: auto;
+    /*height: auto;
     width: 100%;
-    max-width: 100%;
+    max-width: 100%; */
 }
 
 .dash-footer {
     background-color: cyan;
-    border: 1px solid white;
-    height: auto;
+    /* height: auto;
     width: 100%;
-    max-width: 100%;
+    max-width: 100%; */
 }
 
 .dash-center {
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 .dash-left {
-    height: auto;
+    /* height: auto;
     width: auto;
-    max-width: 100%;
+    max-width: 100%; */
 }
 
 .dash-main {
     /* background-color: lightgray; */
     /* background-color: blue;
     border: 1px solid white; */
-    height: auto;
+    /* height: auto;
     width: auto;
-    max-width: 100%;
+    max-width: 100%; */
 }
 
 
@@ -44,7 +42,7 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
-    .dash-header {
+    /* .dash-header {
         height: 50px;
         resize: both;
         overflow: auto;
@@ -66,7 +64,7 @@
         resize: both;
         overflow: auto;
         float: left;
-    }
+    } */
  }
 
 /* Large devices (desktops, 992px and up) */
