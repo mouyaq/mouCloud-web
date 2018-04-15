@@ -39,14 +39,14 @@ export class VmComponent implements OnInit {
     onClickPowerOn() {
       this.vmService.powerOn(this.getId()).subscribe(
         status => console.log(status)
-      )
+      );
       console.log('Power On');
     }
 
     onClickPowerOff() {
       this.vmService.powerOff(this.getId()).subscribe(
         status => console.log(status)
-      )
+      );
       console.log('Power Off');
     }
 
