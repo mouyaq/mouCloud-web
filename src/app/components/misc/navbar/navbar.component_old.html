@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md navbar-dark">
+
+  <div class="container-fluid" id="myNav">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/']">
+        <img src="/assets/brand/MC01v1.png" class="d-inline-block align-top" alt="logo">
+        <span>MCloud</span>
+      </a>
+    </div>
+
+    <div class="collapsed navbar-collapse" id="navbar-actions">
+      <ul class="nav navbar-nav" id="navbar-actions">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/dashboard']">
+            <button class="btn btn-secondary">Home</button> 
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/host']">
+            <button class="btn btn-secondary">Hosts</button> 
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/vm']">
+            <button class="btn btn-secondary">VMs</button> 
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="navbar-user">
+      <ul class="nav navbar-nav navbar-right" id="navbar-user">
+        <li *ngIf="!user">
+          <a [routerLink]="['/login']"><button class="btn btn-primary">Log In</button></a>
+        </li>
+        <li class="dropdown" *ngIf="user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ user.username }}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu bg-secondary">
+            <li>
+              <button type="submit" class="form-button btn btn-block btn-secondary" (click)="onClickLogout()">Action 1</button>
+              <button type="submit" class="form-button btn btn-block btn-secondary" (click)="onClickLogout()">Action 2</button>
+              <button type="submit" class="form-button btn btn-block btn-danger" (click)="onClickLogout()">Logout</button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</nav>

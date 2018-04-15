@@ -1,0 +1,79 @@
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query since this is the default in Bootstrap */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #222;
+    height: 60px;
+}
+
+#myNav {
+    display: inline-block;
+}
+
+.navbar-header {
+    display: inline-block;
+    float: left;
+}
+
+.navbar-brand * {
+    display: inline-block; 
+    vertical-align: middle;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+}
+
+#navbar-actions {
+    display: inline-block;
+}
+
+.nav-item {
+    /* margin: 0, auto; */
+    /* padding: 5px; */
+    float: left;
+}
+
+.nav-link {
+    padding: 5px;
+}
+
+#navbar-user {
+    display: inline-block;
+    overflow: auto;
+}
+
+a {
+}
+
+button {
+    padding: 5px;
+}
+
+ul {
+}
+
+li {
+}
+
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+

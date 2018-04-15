@@ -2,16 +2,16 @@
 /* No media query since this is the default in Bootstrap */
 
 .dash-header {
-    /* background-color: yellow;
-    border: 1px solid white; */
+    background-color: yellow;
+    border: 1px solid white;
     height: auto;
     width: 100%;
     max-width: 100%;
 }
 
 .dash-footer {
-    /* background-color: cyan;
-    border: 1px solid white; */
+    background-color: cyan;
+    border: 1px solid white;
     height: auto;
     width: 100%;
     max-width: 100%;
@@ -23,13 +23,16 @@
 
 .dash-left {
     height: auto;
+    width: auto;
     max-width: 100%;
 }
 
 .dash-main {
+    /* background-color: lightgray; */
     /* background-color: blue;
     border: 1px solid white; */
     height: auto;
+    width: auto;
     max-width: 100%;
 }
 
@@ -52,20 +55,15 @@
     }
     
     .dash-left {
-        height: 600px;
         resize: both;
         overflow: auto;
         float: left;
-        width: auto;
     }
     
     .dash-main {
-        height: 600px;
-        width: 100%;
         resize: both;
         overflow: auto;
         float: left;
-        width: auto;
     }
  }
 
