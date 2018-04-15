@@ -7,29 +7,29 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col vm-console">
-            <!-- Aqui va la consola -->
+        <div class="col-sm-4 col-md-4 vm-console">
+            CONSOLE
         </div>
-        <div class="col vm-info">
+        <div class="col-12 col-sm-8 col-md-8 vm-info">
             <div class="row">
-                <div class="col-12 col-6-sm col-md-4 vm-info-key">Status</div>
-                <div class="col-12 col-6-sm col-md-8 vm-info-value">{{ vm.power_state }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-key">Status</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.power_state }}</div>
             </div>
             <div class="row">
-                <div class="col-12 col-6-sm col-md-4 vm-info-key">Cpu</div>
-                <div class="col-12 col-6-sm col-md-8 vm-info-value">{{ vm.cpu.count }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-key">Cpu</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.cpu.count }}</div>
             </div>            
             <div class="row">
-                <div class="col-12 col-6-sm col-md-4 vm-info-key">Ram (MB)</div>
-                <div class="col-12 col-6-sm col-md-8 vm-info-value">{{ vm.memory.size_MiB }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-key">Ram (MB)</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.memory.size_MiB }}</div>
             </div>            
             <div class="row">
-                <div class="col-12 col-6-sm col-md-4 vm-info-key">Guest OS</div>
-                <div class="col-12 col-6-sm col-md-8 vm-info-value">{{ vm.guest_OS }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-key">Guest OS</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.guest_OS }}</div>
             </div>
             <div class="row" *ngFor="let nic of vm.nics">
-                <div class="col-12 col-6-sm col-md-4 vm-info-key">{{ nic.value.label }}</div>
-                <div class="col-12 col-6-sm col-md-8 vm-info-value">{{ nic.value.mac_address }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-key">{{ nic.value.label }}</div>
+                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ nic.value.mac_address }}</div>
             </div>
         </div>
     </div> 

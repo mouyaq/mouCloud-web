@@ -17,7 +17,6 @@ button {
 
 .vm-console {
     display: none;
-    width: 0;
 }
 
 .vm-info {
@@ -42,7 +41,12 @@ button {
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { 
-    
+    .vm-console {
+        border: 1px solid white;
+        display: block;
+        height: 150px;
+        width: 300px;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
