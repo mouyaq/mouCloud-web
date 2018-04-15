@@ -28,17 +28,17 @@ export class VmService extends BaseApiService {
   }
 
   powerOn(id: string): Observable<string> {
-    return this.http.post(`${VmService.VM_API}/${id}/power/start`, {})
+    return this.http.post(`${VmService.VM_API}/${id}/power/start`, null)
       .catch(error => this.handleError(error));
   }
 
   powerOff(id: string): Observable<string> {
-    return this.http.post(`${VmService.VM_API}/${id}/power/stop`, {})
+    return this.http.post(`${VmService.VM_API}/${id}/power/stop`, null)
     .catch(error => this.handleError(error));
   }
 
   powerReset(id: string): Observable<string> {
-    return this.http.post(`${VmService.VM_API}/${id}/power/reset`, {})
+    return this.http.post(`${VmService.VM_API}/${id}/power/reset`, null)
     .catch(error => this.handleError(error));
   }
 
