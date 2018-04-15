@@ -1,3 +1,4 @@
+import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { HostService } from './shared/services/host.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -44,6 +45,7 @@ import { HostComponent } from './components/dashboard/main/host/host.component';
     HttpModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
+    // RouterModule.forRoot(routes, {enableTracing: true})
   ],
   providers: [
     {
@@ -55,7 +57,8 @@ import { HostComponent } from './components/dashboard/main/host/host.component';
     InventoryService,
     VmService,
     HostService,
-    IsAuthenticatedGuard
+    IsAuthenticatedGuard,
+    VmDetailsResolverGuard
   ],
   bootstrap: [AppComponent]
 })

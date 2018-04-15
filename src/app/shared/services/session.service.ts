@@ -32,7 +32,7 @@ export class SessionService extends BaseApiService {
 
   getToken(): string {
     if (this.user) {
-      return this.user.token; 
+      return this.user.token;
     }
   }
 

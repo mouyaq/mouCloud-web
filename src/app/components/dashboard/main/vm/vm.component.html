@@ -1,4 +1,21 @@
-<!-- <div *ngIf="vm">
-<p>{{ vm.name }}</p>
-</div> -->
 <h3>VM COMPONENT</h3>
+
+<div *ngIf="vm">
+    <div class="vm-info">
+        <h4>Name: {{ vm.name }}</h4>
+        <h5>STATUS: {{ vm.power_state }}</h5>
+        <h5>CPU: {{ vm.cpu.count }}</h5>
+        <h5>MEMORY: {{ vm.memory.size_MiB }}</h5>
+        <h5>GUEST OS: {{ vm.guest_OS }}</h5>
+        <h5>NETWORK:</h5>
+        <h6 *ngFor="let nic of vm.nics">
+            <p>{{ nic.value.label }}</p>
+            <p>{{ nic.value.mac_address }}</p>
+        </h6>
+    </div> 
+    <div class="vm-actions">
+        <button type="button" class="btn btn-success" (click)="onClickPowerOn()">Power On</button>
+        <button type="button" class="btn btn-danger" (click)="onClickPowerOff()">Power Off</button>
+        <button type="button" class="btn btn-warning" (click)="onClickPowerReset()">Reset</button>
+    </div>
+</div>

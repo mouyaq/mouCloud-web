@@ -17,7 +17,7 @@ export class HostService extends BaseApiService {
   }
 
   list(): Observable<Array<Host>> {
-    return this.http.get(HostService.HOST_API)
+    return this.http.get<Array<Host>>(HostService.HOST_API)
       .catch(error => this.handleError(error));
   }
 

@@ -1,3 +1,4 @@
+import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { MainComponent } from './components/dashboard/main/main.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/misc/login/login.component';
@@ -14,10 +15,10 @@ export const routes: Routes = [
         // { path: 'datacenter', canActivate: [IsAuthenticatedGuard], component: },
         // { path: 'cluster', canActivate: [IsAuthenticatedGuard], component: },
         // { path: 'host', canActivate: [IsAuthenticatedGuard], component: },
-        { path: 'vm', canActivate: [IsAuthenticatedGuard], component: VmComponent, children: [
-            { path: ':id', canActivate: [IsAuthenticatedGuard], component: VmComponent }
+        { path: 'vm', canActivate: [IsAuthenticatedGuard], component: MainComponent, children: [
+            { path: ':id', canActivate: [IsAuthenticatedGuard], resolve: {VmDetailsResolverGuard}, component: VmComponent }
         ] },
-        { path: 'host', canActivate: [IsAuthenticatedGuard], component: HostComponent, children: [
+        { path: 'host', canActivate: [IsAuthenticatedGuard], component: MainComponent, children: [
             { path: ':id', canActivate: [IsAuthenticatedGuard], component: HostComponent }
          ] }
     ] }
