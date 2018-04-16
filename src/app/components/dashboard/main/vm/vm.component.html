@@ -1,43 +1,48 @@
 <div class="container-fluid">
-<div vm-info *ngIf="vm">
-    <div class="row">
-        <div class="col-12 vm-name">
-            <h5>{{ vm.name }}</h5>
+    <div class="vm-info card" *ngIf="vm">
+        <div class="row card-header bg-secondary">
+            <div class="col-12 vm-name">
+                <h5>{{ vm.name }}</h5>
+            </div>
+        </div>
+
+
+        <div class="row card-body bg-secondary vm-panel">
+            <div class="col-sm-4 col-md-4 vm-console">
+                CONSOLE
+            </div>
+            <div class="col-12 col-sm-8 col-md-8 vm-data">
+                <div class="row">
+                    <div class="col-12 col-6-sm col-md-6 vm-data-key">Status</div>
+                    <div class="col-12 col-6-sm col-md-6 vm-data-value">{{ vm.power_state }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-6-sm col-md-6 vm-data-key">Cpu</div>
+                    <div class="col-12 col-6-sm col-md-6 vm-data-value">{{ vm.cpu.count }}</div>
+                </div>            
+                <div class="row">
+                    <div class="col-12 col-6-sm col-md-6 vm-data-key">Ram (MB)</div>
+                    <div class="col-12 col-6-sm col-md-6 vm-data-value">{{ vm.memory.size_MiB }}</div>
+                </div>            
+                <div class="row">
+                    <div class="col-12 col-6-sm col-md-6 vm-data-key">Guest OS</div>
+                    <div class="col-12 col-6-sm col-md-6 vm-data-value">{{ vm.guest_OS }}</div>
+                </div>
+                <div class="row" *ngFor="let nic of vm.nics">
+                    <div class="col-12 col-6-sm col-md-6 vm-data-key">{{ nic.value.label }}</div>
+                    <div class="col-12 col-6-sm col-md-6 vm-data-value">{{ nic.value.mac_address }}</div>
+                </div>
+            </div>
+        </div> 
+
+        
+
+        <div class="row card-footer bg-secondary">
+            <div class="vm-actions col-12">
+                <button type="button" class="btn btn-success" (click)="onClickPowerOn()">Power On</button>
+                <button type="button" class="btn btn-danger" (click)="onClickPowerOff()">Power Off</button>
+                <button type="button" class="btn btn-warning" (click)="onClickPowerReset()">Reset</button>
+            </div>
         </div>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-4 col-md-4 vm-console">
-            CONSOLE
-        </div>
-        <div class="col-12 col-sm-8 col-md-8 vm-info">
-            <div class="row">
-                <div class="col-12 col-6-sm col-md-6 vm-info-key">Status</div>
-                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.power_state }}</div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-6-sm col-md-6 vm-info-key">Cpu</div>
-                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.cpu.count }}</div>
-            </div>            
-            <div class="row">
-                <div class="col-12 col-6-sm col-md-6 vm-info-key">Ram (MB)</div>
-                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.memory.size_MiB }}</div>
-            </div>            
-            <div class="row">
-                <div class="col-12 col-6-sm col-md-6 vm-info-key">Guest OS</div>
-                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ vm.guest_OS }}</div>
-            </div>
-            <div class="row" *ngFor="let nic of vm.nics">
-                <div class="col-12 col-6-sm col-md-6 vm-info-key">{{ nic.value.label }}</div>
-                <div class="col-12 col-6-sm col-md-6 vm-info-value">{{ nic.value.mac_address }}</div>
-            </div>
-        </div>
-    </div> 
-    <hr>
-    <div class="vm-actions">
-        <button type="button" class="btn btn-success" (click)="onClickPowerOn()">Power On</button>
-        <button type="button" class="btn btn-danger" (click)="onClickPowerOff()">Power Off</button>
-        <button type="button" class="btn btn-warning" (click)="onClickPowerReset()">Reset</button>
-    </div>
-</div>
 </div>

@@ -9,6 +9,16 @@ button {
     width: 100%;
 }
 
+hr {
+    background-color: #333;
+}
+
+.vm-info {
+    margin: 10px 0;
+    background-color: #222;
+    text-align: center;
+}
+
 .vm-name {
     margin-top: 10px;
     /* padding: 10px; */
@@ -16,22 +26,19 @@ button {
 }
 
 .vm-console {
+    background-color: #222;
     display: none;
 }
 
-.vm-info {
+.vm-data-key {
     text-align: center;
-}
-
-.vm-info-key {
-    text-align: center;
-    color: #888;
+    color: #aaa;
     padding: 5px;
 }
 
-.vm-info-value {
+.vm-data-value {
     text-align: center;
-    color: #aaa;
+    color: #333;
     padding: 5px;
 }
 
