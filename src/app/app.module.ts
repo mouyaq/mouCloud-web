@@ -25,6 +25,7 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MainComponent } from './components/dashboard/main/main.component';
 import { VmComponent } from './components/dashboard/main/vm/vm.component';
 import { HostComponent } from './components/dashboard/main/host/host.component';
+import { FooterComponent } from './components/dashboard/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HostComponent } from './components/dashboard/main/host/host.component';
     HeaderComponent,
     MainComponent,
     VmComponent,
-    HostComponent
+    HostComponent,
+    FooterComponent
   ],
   imports: [
     NgbModule.forRoot(),

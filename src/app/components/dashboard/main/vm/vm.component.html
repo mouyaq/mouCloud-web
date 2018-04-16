@@ -2,16 +2,16 @@
 
     <div class="vm-info card" *ngIf="vm">
 
-        <div class="row card-header bg-secondary">
+        <div class="row card-header">
             <div class="col-12 vm-name">
-                <h5>{{ vm.name }}</h5>
+                <h5 id="vm-name">{{ vm.name }}</h5>
             </div>
         </div>
 
 
         <div class="row card-body bg-secondary vm-panel">
             <div class="col-sm-4 col-md-4 vm-console">
-                CONSOLE
+                <!-- CONSOLE LINK HERE -->
             </div>
             <div class="col-12 col-sm-8 col-md-8 vm-data">
                 <div class="row">
@@ -39,16 +39,16 @@
 
         
 
-        <div class="row card-footer bg-secondary">
+        <div class="row card-footer">
             <div class="vm-actions col-12">
-                <button type="button" class="btn btn-success" (click)="onClickPowerOn()">Power On</button>
-                <button type="button" class="btn btn-danger" (click)="onClickPowerOff()">Power Off</button>
-                <button type="button" class="btn btn-warning" (click)="onClickPowerReset()">Reset</button>
+                <button type="button" class="btn btn-outline-success" [disabled]="isPoweredOn()" (click)="onClickPowerOn()">Power On</button>
+                <button type="button" class="btn btn-outline-danger" [disabled]="!isPoweredOn()" (click)="onClickPowerOff()">Power Off</button>
+                <button type="button" class="btn btn-outline-warning" [disabled]="!isPoweredOn()" (click)="onClickPowerReset()">Reset</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
                     Open Modal
                 </button>
-                <button class="btn btn-dark" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>      
+                <button class="btn btn-outline-light" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>      
             </div>
         </div>
 

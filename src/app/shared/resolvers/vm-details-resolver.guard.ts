@@ -13,7 +13,6 @@ export class VmDetailsResolverGuard implements Resolve<Vm> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Vm> {
     if (!route.params['id']) {
-      console.log('NO ID');
       return this.vmService.list()
         .catch(error => {
           this.router.navigate(['/dashboard']);
@@ -21,7 +20,6 @@ export class VmDetailsResolverGuard implements Resolve<Vm> {
         });
     }
     else {
-      console.log('SI ID');
       return this.vmService.get(route.params['id'])
         .catch(error => {
           this.router.navigate(['/dashboard']);

@@ -24,7 +24,6 @@ export class VmComponent implements OnInit {
     this.routes
       .data
       .subscribe(data => {
-        console.log(data);
         this.vm = data['VmDetailsResolverGuard'];
       });
     }
@@ -55,5 +54,9 @@ export class VmComponent implements OnInit {
         status => console.log(status)
       );
       console.log('Reset');
+    }
+
+    isPoweredOn() {
+      return true;
     }
 }

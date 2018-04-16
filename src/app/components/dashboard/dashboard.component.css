@@ -2,17 +2,11 @@
 /* No media query since this is the default in Bootstrap */
 
 .dash-header {
-    background-color: yellow;
-    /*height: auto;
-    width: 100%;
-    max-width: 100%; */
+
 }
 
 .dash-footer {
-    background-color: cyan;
-    /* height: auto;
-    width: 100%;
-    max-width: 100%; */
+
 }
 
 .dash-center {
