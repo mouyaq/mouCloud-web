@@ -53,7 +53,7 @@ export class VmComponent implements OnInit {
     onClickPowerReset() {
       this.vmService.powerReset(this.getId()).subscribe(
         status => console.log(status)
-      )
+      );
       console.log('Reset');
     }
 }

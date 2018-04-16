@@ -15,6 +15,7 @@ export const routes: Routes = [
         // { path: 'datacenter', canActivate: [IsAuthenticatedGuard], component: },
         // { path: 'cluster', canActivate: [IsAuthenticatedGuard], component: },
         // { path: 'host', canActivate: [IsAuthenticatedGuard], component: },
+        { path: 'vm', canActivate: [IsAuthenticatedGuard], resolve: {VmDetailsResolverGuard}, component: MainComponent },
         { path: 'vm', canActivate: [IsAuthenticatedGuard], component: MainComponent, children: [
             { path: ':id', canActivate: [IsAuthenticatedGuard], resolve: {VmDetailsResolverGuard}, component: VmComponent }
         ] },
