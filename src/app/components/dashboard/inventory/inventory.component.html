@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" href="#collapse-host">
-                      <button class="btn btn-lg btn-primary">Hosts</button>
+                      <button class="btn btn-outline-light">Hosts</button>
                     </a>
                 </h4>
             </div>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="vm-link">
                           <a [routerLink]="['host', host.host]">
-                            <button class="btn btn-secondary">{{ host.name }}</button>
+                            <button class="btn btn-outline-secondary">{{ host.name }}</button>
                           </a> 
                         </div>
                       </div>
@@ -34,7 +34,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" href="#collapse-vm">
-                      <button class="btn btn-lg btn-primary">Virtual Machines</button>
+                      <button class="btn btn-outline-light">Virtual Machines</button>
                     </a>
                 </h4>
             </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="vm-link">
                           <a [routerLink]="['vm', vm.vm]">
-                            <button class="btn btn-secondary">{{ vm.name }}</button>
+                            <button class="btn btn-outline-secondary">{{ vm.name }}</button>
                           </a> 
                         </div>
                       </div>

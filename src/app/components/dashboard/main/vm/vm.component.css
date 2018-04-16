@@ -1,9 +1,5 @@
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query since this is the default in Bootstrap */
-* {
-    color: white;
-}
-
 button {
     margin: 10px 0;
     width: 100%;
@@ -20,6 +16,7 @@ hr {
 }
 
 .vm-name {
+    color: #fff;
     margin-top: 10px;
     /* padding: 10px; */
     text-align: center;
