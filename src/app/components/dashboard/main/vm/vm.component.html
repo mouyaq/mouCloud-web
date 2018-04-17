@@ -41,14 +41,14 @@
 
         <div class="row card-footer">
             <div class="vm-actions col-12">
-                <button type="button" class="btn btn-outline-success" [disabled]="isPoweredOn()" (click)="onClickPowerOn()">Power On</button>
-                <button type="button" class="btn btn-outline-danger" [disabled]="!isPoweredOn()" (click)="onClickPowerOff()">Power Off</button>
-                <button type="button" class="btn btn-outline-warning" [disabled]="!isPoweredOn()" (click)="onClickPowerReset()">Reset</button>
+                <button type="button" class="btn btn-outline-success vm-actions-btn" *ngIf="!isPoweredOn()" (click)="onClickPowerOn()">Power On</button>
+                <button type="button" class="btn btn-outline-danger vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerOff()">Power Off</button>
+                <button type="button" class="btn btn-outline-warning vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerReset()">Reset</button>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-outline-primary vm-actions-btn" data-toggle="modal" data-target="#exampleModal">
                     Open Modal
                 </button>
-                <button class="btn btn-outline-light" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>      
+                <button class="btn btn-outline-light vm-actions-btn" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>      
             </div>
         </div>
 

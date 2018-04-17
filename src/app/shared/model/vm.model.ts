@@ -8,7 +8,7 @@ export class Vm {
         size_MiB: string,
         hot_add_enabled?: boolean
     };
-
+    power_state?: string;
 }
 
 
