@@ -53,11 +53,11 @@ img {
 }
 
 .POWERED_OFF {
-    background-color: red;
+    content: url('/assets/img/icons/vm/vm-off-256.png');
 }
 
 .POWERED_ON {
-    background-color: green;
+    content: url('/assets/img/icons/vm/vm-on-256.png');
 }
 
 .vm-link {

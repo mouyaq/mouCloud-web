@@ -1,3 +1,4 @@
+import { InventoryService } from './../../../shared/services/inventory.service';
 import { Router } from '@angular/router';
 import { Host } from './../../../shared/model/host.model';
 import { HostService } from './../../../shared/services/host.service';
@@ -21,21 +22,19 @@ export class InventoryComponent implements OnInit {
     private router: Router,
     private sessionService: SessionService,
     private vmService: VmService,
-    private hostService: HostService
+    private hostService: HostService,
+    private inventoryService: InventoryService
   ) { }
 
   ngOnInit() {
-    this.vmService.list().subscribe(
-      (vms) => {
+    this.inventoryService.updateVms()
+      .subscribe((vms) => {
         this.vms = vms;
-      }
-    );
-
-    this.hostService.list().subscribe(
-      (hosts) => {
+      });
+    this.inventoryService.updateHosts()
+      .subscribe((hosts) => {
         this.hosts = hosts;
-      }
-    );
+      });
   }
 
   onClick() {

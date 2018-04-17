@@ -41,6 +41,7 @@ export class VmComponent implements OnInit {
           this.vmService.get(this.getId())
           .subscribe(data => {
             this.vm = data;
+            this.inventoryService.updateVms();
           });
         });
         console.log('Power On');

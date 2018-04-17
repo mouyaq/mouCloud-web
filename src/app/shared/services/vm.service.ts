@@ -1,3 +1,4 @@
+import { InventoryService } from './inventory.service';
 import { Subject } from 'rxjs/Rx';
 import { Response } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
@@ -46,4 +47,3 @@ export class VmService extends BaseApiService {
   }
 
 }
-
