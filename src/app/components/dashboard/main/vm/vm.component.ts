@@ -37,13 +37,13 @@ export class VmComponent implements OnInit {
 
     onClickPowerOn() {
       this.vmService.powerOn(this.getId())
-      .subscribe(() => {
-        this.vmService.get(this.getId())
-        .subscribe(data => {
-          this.vm = data;
+        .subscribe(() => {
+          this.vmService.get(this.getId())
+          .subscribe(data => {
+            this.vm = data;
+          });
         });
-      });
-      console.log('Power On');
+        console.log('Power On');
     }
 
     onClickPowerOff() {
@@ -54,14 +54,18 @@ export class VmComponent implements OnInit {
             this.vm = data;
           });
         });
-      console.log('Power Off');
+        console.log('Power Off');
     }
 
     onClickPowerReset() {
-      this.vmService.powerReset(this.getId()).subscribe(
-        status => console.log(status)
-      );
-      console.log('Reset');
+      this.vmService.powerReset(this.getId())
+        .subscribe(() => {
+          this.vmService.get(this.getId())
+          .subscribe(data => {
+            this.vm = data;
+          });
+        });
+        console.log('Reset');
     }
 
     isPoweredOn() {

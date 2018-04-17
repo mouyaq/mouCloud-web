@@ -11,13 +11,10 @@
             <div id="collapse-host" class="panel-collapse collapse">
                 <ul class="list-group">
                     <li *ngFor="let host of hosts">
-                      <div class="vm-container">
-                        <div class="vm-icon">
-                          <img class="{{ host.power_state }}"/>
-                        </div>
-                        <div class="vm-link">
+                      <div class="row">
+                        <div class="col-12 vm-link">
                           <a [routerLink]="['host', host.host]">
-                            <button class="btn btn-outline-secondary">{{ host.name }}</button>
+                            <button class="btn btn-outline-secondary"><img src="/assets/img/icons/vm/vm-256.png"/>{{ host.name }}</button>
                           </a> 
                         </div>
                       </div>
@@ -41,13 +38,10 @@
             <div id="collapse-vm" class="panel-collapse collapse">
                 <ul class="list-group">
                     <li *ngFor="let vm of vms">
-                      <div class="vm-container">
-                        <div class="vm-icon">
-                          <img class="{{ vm.power_state }}"/>
-                        </div>
-                        <div class="vm-link">
+                      <div class="row">
+                        <div class="col-12 vm-link">
                           <a [routerLink]="['vm', vm.vm]">
-                            <button class="btn btn-outline-secondary">{{ vm.name }}</button>
+                            <button class="btn btn-outline-secondary"><img class="{{ vm.power_state }}" src="/assets/img/icons/vm/vm-256.png"/>{{ vm.name }}</button>
                           </a> 
                         </div>
                       </div>
