@@ -70,6 +70,6 @@ export class InventoryComponent implements OnInit, OnDestroy {
   //   if (isExpanded) {
   //     this.router.navigate(['/dashboard/vm']);
   //   }
-  // }
+  }
 
 }
