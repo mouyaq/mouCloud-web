@@ -26,29 +26,21 @@ export class InventoryComponent implements OnInit, OnDestroy {
     private sessionService: SessionService,
     private vmService: VmService,
     private hostService: HostService
-    // private inventoryService: InventoryService
   ) { }
 
   ngOnInit() {
-    // this.inventoryService.updateVms()
-    //   .subscribe((vms) => {
-    //     this.vms = vms;
-    //   });
-    // this.inventoryService.updateHosts()
-    //   .subscribe((hosts) => {
-    //     this.hosts = hosts;
-    //   });
-    this.hosts = this.hostService.getHosts();
+    this.hostService.list().subscribe();
     this.hostsSubscription = this.hostService.onHostsChanges()
       .subscribe(hosts => {
         this.hosts = hosts;
       });
 
-    this.vms = this.vmService.getVms();
+    this.vmService.list().subscribe();
     this.vmsSubscription = this.vmService.onVmsChanges()
       .subscribe(vms => {
         this.vms = vms;
       });
+
   }
 
   ngOnDestroy() {
@@ -58,18 +50,10 @@ export class InventoryComponent implements OnInit, OnDestroy {
 
   onClickHosts() {
     this.router.navigate(['/dashboard/host']);
-    // const isExpanded = $('#collapse-host').hasClass('show');
-    // if (isExpanded) {
-    //   this.router.navigate(['/dashboard/host']);
-    // }
   }
 
   onClickVms() {
     this.router.navigate(['/dashboard/vm']);
-  //   const isExpanded = $('#collapse-vm').hasClass('show');
-  //   if (isExpanded) {
-  //     this.router.navigate(['/dashboard/vm']);
-  //   }
   }
 
 }
