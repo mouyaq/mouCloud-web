@@ -1,7 +1,7 @@
-<div class="form-login bg-light">
+<div class="form-login">
   <div class="container">
       <h2>Log In</h2>
-      <img src="/assets/img/brand/MC01v1.png">
+      <img src="/assets/img/brand/MC01.png">
   </div>
   
   <form (ngSubmit)="onSubmitLogin(loginForm)" #loginForm="ngForm">
@@ -16,4 +16,12 @@
       <button type="submit" class="form-button btn btn-block btn-primary" [disabled]="!loginForm.valid">Login</button>
     </div>
   </form>
+</div>
+
+<div class="content-fluid login-footer">
+<div class="row">
+  <div class="col-12">
+    <p>MCloud developer by @mouyaq at Ironhack 2018</p>
+  </div>
+</div>
 </div>

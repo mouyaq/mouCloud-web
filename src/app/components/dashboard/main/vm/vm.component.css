@@ -5,25 +5,18 @@ button {
     width: 100%;
 }
 
-hr {
-    background-color: #333;
-}
-
 .vm-info {
-    margin: 10px 0;
-    background-color: #222;
+    margin: 20px 0;
     text-align: center;
 }
 
 .vm-name {
     color: #fff;
-    margin-top: 10px;
-    /* padding: 10px; */
     text-align: center;
 }
 
 .vm-panel {
-    border-radius: 10px;
+    margin: 0;
 }
 
 .vm-console {
@@ -50,10 +43,9 @@ hr {
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { 
     .vm-console {
-        border: 1px solid white;
         display: block;
-        height: 150px;
-        width: 300px;
+        height: 200px;
+        width: 240px;
     }
 }
 
