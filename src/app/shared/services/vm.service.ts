@@ -109,4 +109,9 @@ export class VmService extends BaseApiService {
     return this.vms;
   }
 
+  // Devuelve "value": "vm-65"
+  create(spec) {
+    return this.http.post(`${VmService.VM_API}`, spec);
+  }
+
 }

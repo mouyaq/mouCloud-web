@@ -27,6 +27,7 @@ import { MainComponent } from './components/dashboard/main/main.component';
 import { VmComponent } from './components/dashboard/main/vm/vm.component';
 import { HostComponent } from './components/dashboard/main/host/host.component';
 import { FooterComponent } from './components/dashboard/footer/footer.component';
+import { VmCreateComponent } from './components/vm/vm-create/vm-create.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { FooterComponent } from './components/dashboard/footer/footer.component'
     MainComponent,
     VmComponent,
     HostComponent,
-    FooterComponent
+    FooterComponent,
+    VmCreateComponent
   ],
   imports: [
     NgbModule.forRoot(),
