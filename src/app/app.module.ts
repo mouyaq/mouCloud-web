@@ -1,3 +1,4 @@
+import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
 import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { HostService } from './shared/services/host.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -60,7 +61,8 @@ import { FooterComponent } from './components/dashboard/footer/footer.component'
     VmService,
     HostService,
     IsAuthenticatedGuard,
-    VmDetailsResolverGuard
+    VmDetailsResolverGuard,
+    HostDetailsResolverGuard
   ],
   bootstrap: [AppComponent]
 })

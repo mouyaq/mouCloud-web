@@ -1,3 +1,4 @@
+import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
 import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { MainComponent } from './components/dashboard/main/main.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -19,6 +20,7 @@ export const routes: Routes = [
         { path: 'vm', canActivate: [IsAuthenticatedGuard], component: MainComponent, children: [
             { path: ':id', canActivate: [IsAuthenticatedGuard], resolve: {VmDetailsResolverGuard}, component: VmComponent }
         ] },
+        { path: 'host', canActivate: [IsAuthenticatedGuard], resolve: {HostDetailsResolverGuard}, component: MainComponent },
         { path: 'host', canActivate: [IsAuthenticatedGuard], component: MainComponent, children: [
             { path: ':id', canActivate: [IsAuthenticatedGuard], component: HostComponent }
          ] }

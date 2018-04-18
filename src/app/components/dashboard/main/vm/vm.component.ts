@@ -1,7 +1,8 @@
+import { Subscription } from 'rxjs/Subscription';
 import { InventoryService } from './../../../../shared/services/inventory.service';
 import { VmService } from './../../../../shared/services/vm.service';
-import { Router, ActivatedRoute, ParamMap, NavigationEnd, ActivatedRouteSnapshot, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Vm } from './../../../../shared/model/vm.model';
 
 @Component({
@@ -9,15 +10,15 @@ import { Vm } from './../../../../shared/model/vm.model';
   templateUrl: './vm.component.html',
   styleUrls: ['./vm.component.css']
 })
-export class VmComponent implements OnInit {
-  vm: Vm = new Vm();
+export class VmComponent implements OnInit, OnDestroy {
+  vm: Vm;
+  vmSubscription: Subscription;
   error: Object;
 
   constructor(
     private router: Router,
     private routes: ActivatedRoute,
-    private vmService: VmService,
-    private inventoryService: InventoryService
+    private vmService: VmService
   ) { }
 
   ngOnInit() {
@@ -26,50 +27,42 @@ export class VmComponent implements OnInit {
       .subscribe(data => {
         this.vm = data['VmDetailsResolverGuard'];
       });
-    }
 
-    private getId() {
-      const urlTree: UrlTree = this.router.parseUrl(this.router.url);
-      const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
-      const s: UrlSegment[] = g.segments;
-      return s[2].path;
-    }
+    this.vm = this.vmService.getVm();
+    this.vmSubscription = this.vmService.onVmChange()
+      .subscribe(vm => {
+        this.vm = vm;
+      });
+  }
 
-    onClickPowerOn() {
-      this.vmService.powerOn(this.getId())
-        .subscribe(() => {
-          this.vmService.get(this.getId())
-          .subscribe(data => {
-            this.vm = data;
-            this.inventoryService.updateVms();
-          });
-        });
-        console.log('Power On');
-    }
+  ngOnDestroy() {
+    this.vmSubscription.unsubscribe();
+  }
 
-    onClickPowerOff() {
-      this.vmService.powerOff(this.getId())
-        .subscribe(() => {
-          this.vmService.get(this.getId())
-          .subscribe(data => {
-            this.vm = data;
-          });
-        });
-        console.log('Power Off');
-    }
+  private getId() {
+    const urlTree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
+    return s[2].path;
+  }
 
-    onClickPowerReset() {
-      this.vmService.powerReset(this.getId())
-        .subscribe(() => {
-          this.vmService.get(this.getId())
-          .subscribe(data => {
-            this.vm = data;
-          });
-        });
-        console.log('Reset');
-    }
+  onClickPowerOn() {
+    this.vmService.powerOn(this.getId()).subscribe();
+    console.log('Power On');
+  }
 
-    isPoweredOn() {
-      return this.vm.power_state === 'POWERED_ON';
-    }
+  onClickPowerOff() {
+    this.vmService.powerOff(this.getId()).subscribe();
+      console.log('Power Off');
+  }
+
+  onClickPowerReset() {
+    this.vmService.powerReset(this.getId()).subscribe();
+      console.log('Reset');
+  }
+
+  isPoweredOn() {
+    return this.vm.power_state === 'POWERED_ON';
+  }
+
 }

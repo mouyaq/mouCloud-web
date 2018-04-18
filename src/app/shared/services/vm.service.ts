@@ -11,8 +11,11 @@ import { Vm } from '../model/vm.model';
 @Injectable()
 export class VmService extends BaseApiService {
   protected static readonly VM_API = `${BaseApiService.BASE_API}/vm`;
+
   private vm: Vm;
+  private vms: Array<Vm> = [];
   private vmSubject: Subject<Vm> = new Subject();
+  private vmsSubject: Subject<Array<Vm>> = new Subject();
 
   constructor(
     private http: HttpClient,
@@ -23,27 +26,87 @@ export class VmService extends BaseApiService {
 
   list(): Observable<Array<Vm>> {
     return this.http.get<Array<Vm>>(VmService.VM_API)
+      .map(res => {
+        return this.setVms(res);
+      })
       .catch(error => this.handleError(error));
   }
 
   get(id: string): Observable<Vm> {
     return this.http.get<Vm>(`${VmService.VM_API}/${id}`)
+      .map(res => {
+        return this.setVm(res);
+      })
       .catch(error => this.handleError(error));
+  }
+
+  getVm(): Vm {
+    return this.vm;
+  }
+
+  getVms(): Array<Vm> {
+    return this.vms;
+  }
+
+  onVmChange() {
+    return this.vmSubject.asObservable();
+  }
+
+  onVmsChanges(): Observable<Array<Vm>> {
+    return this.vmsSubject.asObservable();
+  }
+
+  private notifyVmChange(): void {
+    this.vmSubject.next(this.vm);
+  }
+
+  private notifyVmsChanges(): void {
+    this.vmsSubject.next(this.vms);
+  }
+
+  private update(id: string) {
+    this.get(id).subscribe(() => {
+      this.notifyVmChange();
+    });
+    this.list().subscribe(() => {
+      this.notifyVmsChanges();
+    });
   }
 
   powerOn(id: string): Observable<string> {
     return this.http.post(`${VmService.VM_API}/${id}/power/start`, null)
+      .map(() => {
+        return this.update(id);
+      })
       .catch(error => this.handleError(error));
   }
 
   powerOff(id: string): Observable<string> {
     return this.http.post(`${VmService.VM_API}/${id}/power/stop`, null)
+    .map(() => {
+      return this.update(id);
+    })
     .catch(error => this.handleError(error));
   }
 
   powerReset(id: string): Observable<string> {
     return this.http.post(`${VmService.VM_API}/${id}/power/reset`, null)
+    .map(() => {
+      return this.update(id);
+    })
     .catch(error => this.handleError(error));
+  }
+
+  setVm(vm: Vm): Vm {
+    this.vm = vm;
+    this.notifyVmChange();
+    return this.vm;
+  }
+
+  setVms(vms: Array<Vm>): Array<Vm> {
+    this.vms = vms;
+    this.notifyVmsChanges();
+    return this.vms;
   }
 
 }
