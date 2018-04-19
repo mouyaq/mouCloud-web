@@ -1,3 +1,6 @@
+import { ResourcePoolService } from './shared/services/resource-pool.service';
+import { FolderService } from './shared/services/folder.service';
+import { DatastoreService } from './shared/services/datastore.service';
 import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
 import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { HostService } from './shared/services/host.service';
@@ -62,6 +65,9 @@ import { VmCreateComponent } from './components/vm/vm-create/vm-create.component
     InventoryService,
     VmService,
     HostService,
+    DatastoreService,
+    FolderService,
+    ResourcePoolService,
     IsAuthenticatedGuard,
     VmDetailsResolverGuard,
     HostDetailsResolverGuard

@@ -17,20 +17,32 @@
         <form (ngSubmit)="onSubmit(newVmForm)" #newVmForm="ngForm">
           <label>Name:</label>
           <input type="text" name="name" id="vm-name" class="form-control" [(ngModel)]="vm.name" required>
-          <label>Guest OS:</label>
-          <input type="text" name="guest_OS" id="vm-guestos" class="form-control" [(ngModel)]="vm.guest_OS" required>
+          <div class="form-group">
+            <label for="guestOS-select">Guest OS:</label>
+            <select id="guestOS-select" name="guest_OS" id="vm-guestos" class="form-control" [(ngModel)]="vm.guest_OS" required>
+              <option value="UBUNTU_64">Ubuntu 64 bits</option>
+              <option value="WINDOWS_9">Windows 10</option>
+            </select>
+          </div>
           <div class="form-group">
             <div class="form-group">
               <label for="datastore-select">Datastore:</label>
               <select id="datastore-select" name="placement.datastore" id="vm-datastore" class="form-control" [(ngModel)]="vm.datastore" required>
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option *ngFor="let datastore of datastores" value="{{ datastore.datastore}}">{{ datastore.name }}</option>
               </select>
             </div>
-            <label>Folder:</label>
-            <input type="text" name="placement.folder" id="vm-folder" class="form-control" [(ngModel)]="vm.folder" required>
-            <label>Resource Pool:</label>
-            <input type="text" name="placement.resource_pool" id="vm-resource-pool" class="form-control" [(ngModel)]="vm.resource_pool" required>
+            <div class="form-group">
+              <label for="folder-select">Folder:</label>
+              <select id="folder-select" name="placement.folder" id="vm-folder" class="form-control" [(ngModel)]="vm.folder" required>
+                <option *ngFor="let folder of folders" value="{{ folder.folder}}">{{ folder.name }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="resource-pool-select">Resource Pool:</label>
+              <select id="resource-pool-select" name="placement.resource_pool" id="vm-resource-pool" class="form-control" [(ngModel)]="vm.resource_pool" required>
+                <option *ngFor="let resourcePool of resourcePools" value="{{ resourcePool.resource_pool}}">{{ resourcePool.name }}</option>
+              </select>
+            </div>
           </div>
           <div class="modal-footer d-flex justify-content-center">
             <button type="submit" class="btn btn-success">Create VM</button>
