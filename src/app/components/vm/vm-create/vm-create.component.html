@@ -1,3 +1,47 @@
-<p>
-  vm-create works!
-</p>
+
+<div class="modal fade" id="modalVmCreateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">New Virtual Machine</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3">
+        
+        <form (ngSubmit)="onSubmit(newVmForm)" #newVmForm="ngForm">
+          <label>Name:</label>
+          <input type="text" name="name" id="vm-name" class="form-control" [(ngModel)]="vm.name" required>
+          <label>Guest OS:</label>
+          <input type="text" name="guest_OS" id="vm-guestos" class="form-control" [(ngModel)]="vm.guest_OS" required>
+          <div class="form-group">
+            <label>Datastore:</label>
+            <input type="text" name="placement.datastore" id="vm-datastore" class="form-control" [(ngModel)]="vm.datastore" required>
+            <label>Folder:</label>
+            <input type="text" name="placement.folder" id="vm-folder" class="form-control" [(ngModel)]="vm.folder" required>
+            <label>Resource Pool:</label>
+            <input type="text" name="placement.resource_pool" id="vm-resource-pool" class="form-control" [(ngModel)]="vm.resource_pool" required>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Create VM</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalVmCreateForm">Launch Modal Login Form</a>
+</div>
+                

@@ -7,6 +7,7 @@ import { BaseApiService } from './base-api.service';
 import { SessionService } from './session.service';
 import { Injectable } from '@angular/core';
 import { Vm } from '../model/vm.model';
+import { VmSpec } from '../model/vmSpec.model';
 
 @Injectable()
 export class VmService extends BaseApiService {
@@ -110,8 +111,12 @@ export class VmService extends BaseApiService {
   }
 
   // Devuelve "value": "vm-65"
-  create(spec) {
-    return this.http.post(`${VmService.VM_API}`, spec);
+  create(spec: VmSpec): Observable<Vm> {
+    return this.http.post(`${VmService.VM_API}`, spec)
+      .map((id) => {
+        console.log(id);
+        return new Vm();
+      });
   }
 
 }
