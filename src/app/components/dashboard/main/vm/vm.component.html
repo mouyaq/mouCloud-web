@@ -46,14 +46,15 @@
         <div class="card-footer">
             <div class="row">
                 <div class="vm-actions col-12">
-                    <button type="button" class="btn btn-success vm-actions-btn" *ngIf="!isPoweredOn()" (click)="onClickPowerOn()">Power On</button>
-                    <button type="button" class="btn btn-danger vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerOff()">Power Off</button>
-                    <button type="button" class="btn btn-warning vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerReset()">Reset</button>
+                    <button type="button" class="btn btn-success vm-actions-btn" *ngIf="!isPoweredOn()" (click)="onClickPowerOn()"><i class="fa fa-power-off"></i> Power On</button>
+                    <button type="button" class="btn btn-danger vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerOff()"><i class="fa fa-power-off"></i> Power Off</button>
+                    <button type="button" class="btn btn-warning vm-actions-btn" *ngIf="isPoweredOn()" (click)="onClickPowerReset()"><i class="fa fa-refresh"></i> Reset</button>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary vm-actions-btn" data-toggle="modal" data-target="#exampleModal">
-                        Open Modal
+                        <i class="fa fa-tv"></i> Open Modal
                     </button>
-                    <button class="btn btn-light vm-actions-btn" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>      
+                    <button class="btn btn-light vm-actions-btn" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>                        
+                    <button class="btn btn-danger vm-actions-btn" *ngIf="!isPoweredOn()"><i class="fa fa-trash"></i> Delete</button>   
                 </div>
             </div>
         </div>
