@@ -1,3 +1,6 @@
+import { ResourcePool } from './../../../shared/model/resource-pool.model';
+import { Folder } from './../../../shared/model/folder.model';
+import { Datastore } from './../../../shared/model/datastore.model';
 import { Vm } from './../../../shared/model/vm.model';
 import { VmService } from './../../../shared/services/vm.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +13,18 @@ import { VmSpec } from '../../../shared/model/vmSpec.model';
 })
 export class VmCreateComponent implements OnInit {
   vm: Vm = new Vm();
+  datastores: Array<Datastore> = [];
+  folders: Array<Folder> = [];
+  resourcePools: Array<ResourcePool> = [];
 
   constructor(private vmService: VmService) { }
 
   ngOnInit() {
+    // Load datastores
+
+    // Load Folders
+
+    // Load Resource Pools
   }
 
   onSubmit(newVmForm) {
