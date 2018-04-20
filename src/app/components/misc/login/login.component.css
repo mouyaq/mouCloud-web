@@ -6,14 +6,21 @@
 }
 
 .form-login {
-    background-color: #343A40;
-    border-top: 1px solid #888;
-    border-left: 1px solid #888;
+    /* background-color: #343A40; */
+    /* border-top: 1px solid #888;
+    border-left: 1px solid #888; */
     border-radius: 5px;
     box-shadow: 10px 12px 4px -1px rgba(0, 0, 0, 0.2), 10px 14px 5px 0px rgba(0, 0, 0, 0.14), 10px 11px 10px 0px rgba(0, 0, 0, 0.12);
     margin: 0 auto;
     text-align: center;
     width: 100%;
+    background: rgb(46,51,56); /* Old browsers */
+    background: -moz-linear-gradient(top, rrgba(46,51,56,1) 0%, rgba(129,140,152,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(46,51,56,1) 0%, rgba(129,140,152,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(46,51,56,1) 0%, rgba(129,140,152,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 ); /* IE6-9 */
+
+    
 }
 
 .form-group {

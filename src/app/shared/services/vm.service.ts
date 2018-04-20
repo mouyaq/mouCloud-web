@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { InventoryService } from './inventory.service';
 import { Subject } from 'rxjs/Rx';
 import { Response } from '@angular/http';
@@ -20,7 +21,8 @@ export class VmService extends BaseApiService {
 
   constructor(
     private http: HttpClient,
-    private sessionService: SessionService ) {
+    private sessionService: SessionService,
+    private router: Router ) {
       super();
      }
 
@@ -30,7 +32,13 @@ export class VmService extends BaseApiService {
       .map(res => {
         return this.setVms(res);
       })
-      .catch(error => this.handleError(error));
+      .catch(error => {
+        if (error.status === 401) {
+          this.sessionService.removeSession();
+          this.router.navigate(['/login']);
+        }
+        return this.handleError(error);
+      });
   }
 
   get(id: string): Observable<Vm> {

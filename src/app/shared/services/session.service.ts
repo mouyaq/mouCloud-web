@@ -52,6 +52,10 @@ export class SessionService extends BaseApiService {
       .catch(error => this.handleError(error));
   }
 
+  removeSession(): void {
+    this.doLogout();
+  }
+
   onUserChanges(): Observable<User> {
     return this.userSubject.asObservable();
   }
