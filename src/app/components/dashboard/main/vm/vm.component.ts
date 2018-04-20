@@ -48,17 +48,18 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickPowerOn() {
     this.vmService.powerOn(this.getId()).subscribe();
-    console.log('Power On');
   }
 
   onClickPowerOff() {
     this.vmService.powerOff(this.getId()).subscribe();
-      console.log('Power Off');
   }
 
   onClickPowerReset() {
     this.vmService.powerReset(this.getId()).subscribe();
-      console.log('Reset');
+  }
+
+  onClickDelete() {
+    this.vmService.delete(this.getId()).subscribe();
   }
 
   isPoweredOn() {

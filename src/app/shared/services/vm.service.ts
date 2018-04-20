@@ -66,9 +66,11 @@ export class VmService extends BaseApiService {
   }
 
   private update(id: string) {
-    this.get(id).subscribe(() => {
-      this.notifyVmChange();
-    });
+    if (id !== null) {
+      this.get(id).subscribe(() => {
+        this.notifyVmChange();
+      });
+    }
     this.list().subscribe(() => {
       this.notifyVmsChanges();
     });
@@ -110,12 +112,19 @@ export class VmService extends BaseApiService {
     return this.vms;
   }
 
-  // Devuelve "value": "vm-65"
+  // returns "value": "vm-65"
   create(spec: VmSpec): Observable<Vm> {
     return this.http.post(`${VmService.VM_API}`, spec)
-      .map((id) => {
-        console.log(id);
+      .map(() => {
+        this.update(null);
         return new Vm();
+      });
+  }
+
+  delete(id: string): Observable<void> {
+    return this.http.delete(`${VmService.VM_API}/${id}`)
+      .map(() => {
+        return this.update(null);
       });
   }
 

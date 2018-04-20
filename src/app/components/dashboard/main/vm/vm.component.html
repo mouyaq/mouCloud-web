@@ -54,7 +54,7 @@
                         <i class="fa fa-tv"></i> Open Modal
                     </button>
                     <button class="btn btn-light vm-actions-btn" onClick="window.open('http://www.marca.com');"><span class="icon">Marca.com</span></button>                        
-                    <button class="btn btn-danger vm-actions-btn" *ngIf="!isPoweredOn()"><i class="fa fa-trash"></i> Delete</button>   
+                    <button class="btn btn-danger vm-actions-btn" *ngIf="!isPoweredOn()" (click)="onClickDelete()"><i class="fa fa-trash"></i> Delete</button>   
                 </div>
             </div>
         </div>
