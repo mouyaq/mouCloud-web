@@ -1,8 +1,10 @@
 <div class="card bg-secondary" id="footer">
-  <div class="card-header">
+  <div class="card-header" data-toggle="collapse" href="#card-body-collapse">
     Recent tasks:
+    <button class="btn btn-sm btn-danger" (click)="disableTasks()" *ngIf="isTasksEnabled()"><i class="fa fa-trash"></i> Disable Tasks</button>
+    <button class="btn btn-sm btn-success" (click)="enableTasks()" *ngIf="!isTasksEnabled()"><i class="fa fa-power-off"></i> Enable Tasks</button>
   </div>
-  <div class="card-body">
+  <div class="card-body bg-secondary" id="card-body-collapse">
     <table>
       <tr>
         <th>Id</th>
@@ -10,7 +12,7 @@
         <th>Timestamp</th>
         <th>Username</th>
       </tr>
-        <tr *ngFor="let task of tasks">
+        <tr *ngFor="let task of tasks" class="tr-{{ task.id%2 }}">
           <td>{{ task.id }}</td>
           <td>{{ task.text }}</td>
           <td>{{ task.timestamp }}</td>

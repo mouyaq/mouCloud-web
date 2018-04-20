@@ -8,6 +8,7 @@ import { IsAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
 import { VmComponent } from './components/dashboard/main/vm/vm.component';
 import { HostComponent } from './components/dashboard/main/host/host.component';
 import { VmCreateComponent } from './components/vm/vm-create/vm-create.component';
+import { VmMksComponent } from './components/vm/vm-mks/vm-mks.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -33,6 +34,11 @@ export const routes: Routes = [
                         path: 'new',
                         canActivate: [IsAuthenticatedGuard],
                         component: VmCreateComponent
+                    },
+                    {
+                        path: 'mks',
+                        canActivate: [IsAuthenticatedGuard],
+                        component: VmMksComponent
                     },
                     {
                         path: ':id',

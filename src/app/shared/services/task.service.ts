@@ -21,7 +21,6 @@ export class TaskService {
 
   assignTaskId(): number {
     if (this.tasks.length > 0) {
-      console.log(`TASK ID: ${this.tasks[0].id}`);
       const newId = this.tasks[0].id + 1;
       return newId;
     } else {
