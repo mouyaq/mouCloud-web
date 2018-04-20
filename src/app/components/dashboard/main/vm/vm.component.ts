@@ -15,8 +15,8 @@ import { Task } from '../../../../shared/model/task.model';
 export class VmComponent implements OnInit, OnDestroy {
   vm: Vm;
   vmSubscription: Subscription;
-  private task: Task = new Task();
   error: Object;
+  private task: Task = new Task();
   private date: Date = new Date();
 
   constructor(
@@ -53,6 +53,7 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickPowerOn() {
     this.vmService.powerOn(this.getId()).subscribe();
+    this.task.id = this.taskService.assignTaskId();
     this.task.text = `Power On VM: ${this.getId()}`;
     this.task.timestamp = new Date().toISOString();
     this.taskService.addTask(this.task);
@@ -60,6 +61,7 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickPowerOff() {
     this.vmService.powerOff(this.getId()).subscribe();
+    this.task.id = this.taskService.assignTaskId();
     this.task.text = `Power Off VM: ${this.getId()}`;
     this.task.timestamp = new Date().toISOString();
     this.taskService.addTask(this.task);
@@ -67,6 +69,7 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickPowerReset() {
     this.vmService.powerReset(this.getId()).subscribe();
+    this.task.id = this.taskService.assignTaskId();
     this.task.text = `Power Reset VM: ${this.getId()}`;
     this.task.timestamp = new Date().toISOString();
     this.taskService.addTask(this.task);
@@ -74,6 +77,7 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickDelete() {
     this.vmService.delete(this.getId()).subscribe();
+    this.task.id = this.taskService.assignTaskId();
     this.task.text = `Delete VM: ${this.getId()}`;
     this.task.timestamp = new Date().toISOString();
     this.taskService.addTask(this.task);

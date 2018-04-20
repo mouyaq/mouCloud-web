@@ -3,15 +3,20 @@
     Recent tasks:
   </div>
   <div class="card-body">
-    <tr>
-      <th>Task</th>
-      <th>Timestamp</th>
-      <th>Username</th>
-    </tr>
-    <tr *ngFor="let task of tasks">
-      <td>{{ task.text }}</td>
-      <td>{{ task.timestamp }}</td>
-      <td>{{ task.username }}</td>
-    </tr>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Task</th>
+        <th>Timestamp</th>
+        <th>Username</th>
+      </tr>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.id }}</td>
+          <td>{{ task.text }}</td>
+          <td>{{ task.timestamp }}</td>
+          <td>{{ task.username }}</td>
+        </tr>
+    </table>
+
   </div>
 </div>

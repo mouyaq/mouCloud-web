@@ -1,3 +1,4 @@
+import { TaskService } from './../../../shared/services/task.service';
 import { ResourcePoolService } from './../../../shared/services/resource-pool.service';
 import { ResourcePool } from './../../../shared/model/resource-pool.model';
 import { Folder } from './../../../shared/model/folder.model';
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 import { VmSpec } from '../../../shared/model/vmSpec.model';
 import { DatastoreService } from '../../../shared/services/datastore.service';
 import { FolderService } from '../../../shared/services/folder.service';
+import { Task } from '../../../shared/model/task.model';
+
+declare var $: any;
 
 @Component({
   selector: 'app-vm-create',
@@ -19,12 +23,15 @@ export class VmCreateComponent implements OnInit {
   datastores: Array<Datastore> = [];
   folders: Array<Folder> = [];
   resourcePools: Array<ResourcePool> = [];
+  private task: Task = new Task();
+  private date: Date = new Date();
 
   constructor(
     private vmService: VmService,
     private datastoreService: DatastoreService,
     private folderService: FolderService,
-    private resourcePoolService: ResourcePoolService) { }
+    private resourcePoolService: ResourcePoolService,
+    private taskService: TaskService) { }
 
   ngOnInit() {
     // Load datastores
@@ -44,7 +51,7 @@ export class VmCreateComponent implements OnInit {
       });
   }
 
-  onSubmit(newVmForm) {
+  onSubmit(newVmForm, modalID) {
     const vmSpec = {
       spec: {
         name: this.vm.name,
@@ -65,8 +72,14 @@ export class VmCreateComponent implements OnInit {
 
     this.vmService.create(vmSpec).subscribe(
       (vm) => {
-        newVmForm.reset();
         console.log(vm);
+        newVmForm.reset();
+        $(modalID).modal('toggle');
+        // this.task.text = `Create VM: ${vm.name} with id ${vm.vm}`;
+        this.task.id = this.taskService.assignTaskId();
+        this.task.text = 'VM Created';
+        this.task.timestamp = new Date().toISOString();
+        this.taskService.addTask(this.task);
       }
     );
   }
