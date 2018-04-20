@@ -53,6 +53,12 @@ export class VmCreateComponent implements OnInit {
           datastore: this.vm.datastore,
           folder: this.vm.folder,
           resource_pool: this.vm.resource_pool
+        },
+        cpu: {
+          count: this.vm.cpu_count
+        },
+        memory: {
+          size_MiB: this.vm.memory_MB
         }
       }
     };

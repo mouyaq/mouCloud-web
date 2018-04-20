@@ -1,13 +1,8 @@
 export class Vm {
     vm?: string;
     name: string;
-    cpu?: {
-        count: number
-    };
-    memory?: {
-        size_MiB: string,
-        hot_add_enabled?: boolean
-    };
+    cpu_count?: number;
+    memory_MB: string;
     power_state?: string;
     guest_OS?: string;
     datastore?: string;
