@@ -21,7 +21,7 @@ export const routes: Routes = [
             {
                 path: 'vm',
                 canActivate: [IsAuthenticatedGuard],
-                resolve: {VmDetailsResolverGuard},
+                // resolve: {VmDetailsResolverGuard},
                 component: MainComponent
             },
             {
@@ -45,7 +45,7 @@ export const routes: Routes = [
             {
                 path: 'host',
                 canActivate: [IsAuthenticatedGuard],
-                resolve: {HostDetailsResolverGuard},
+                // resolve: {HostDetailsResolverGuard},
                 component: MainComponent
             },
             {
