@@ -1,3 +1,5 @@
+import { Task } from './../../../shared/model/task.model';
+import { TaskService } from './../../../shared/services/task.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  tasks: Array<Task> = [];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.tasks = this.taskService.getTasks();
   }
 
 }

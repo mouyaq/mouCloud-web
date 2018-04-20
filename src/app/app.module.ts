@@ -1,3 +1,4 @@
+import { TaskService } from './shared/services/task.service';
 import { ResourcePoolService } from './shared/services/resource-pool.service';
 import { FolderService } from './shared/services/folder.service';
 import { DatastoreService } from './shared/services/datastore.service';
@@ -68,6 +69,7 @@ import { VmCreateComponent } from './components/vm/vm-create/vm-create.component
     DatastoreService,
     FolderService,
     ResourcePoolService,
+    TaskService,
     IsAuthenticatedGuard,
     VmDetailsResolverGuard,
     HostDetailsResolverGuard

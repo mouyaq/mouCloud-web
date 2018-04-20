@@ -1,7 +1,17 @@
-<div class="container-fluid" id="footer">
-  <div class="row">
-    <div class="col">
-      <p>Footer</p>
-    </div>
+<div class="card bg-secondary" id="footer">
+  <div class="card-header">
+    Recent tasks:
+  </div>
+  <div class="card-body">
+    <tr>
+      <th>Task</th>
+      <th>Timestamp</th>
+      <th>Username</th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+      <td>{{ task.text }}</td>
+      <td>{{ task.timestamp }}</td>
+      <td>{{ task.username }}</td>
+    </tr>
   </div>
 </div>

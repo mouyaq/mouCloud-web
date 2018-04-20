@@ -4,6 +4,8 @@ import { VmService } from './../../../../shared/services/vm.service';
 import { Router, ActivatedRoute, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Vm } from './../../../../shared/model/vm.model';
+import { TaskService } from '../../../../shared/services/task.service';
+import { Task } from '../../../../shared/model/task.model';
 
 @Component({
   selector: 'app-vm',
@@ -13,12 +15,15 @@ import { Vm } from './../../../../shared/model/vm.model';
 export class VmComponent implements OnInit, OnDestroy {
   vm: Vm;
   vmSubscription: Subscription;
+  private task: Task = new Task();
   error: Object;
+  private date: Date = new Date();
 
   constructor(
     private router: Router,
     private routes: ActivatedRoute,
-    private vmService: VmService
+    private vmService: VmService,
+    private taskService: TaskService
   ) { }
 
   ngOnInit() {
@@ -48,18 +53,30 @@ export class VmComponent implements OnInit, OnDestroy {
 
   onClickPowerOn() {
     this.vmService.powerOn(this.getId()).subscribe();
+    this.task.text = `Power On VM: ${this.getId()}`;
+    this.task.timestamp = new Date().toISOString();
+    this.taskService.addTask(this.task);
   }
 
   onClickPowerOff() {
     this.vmService.powerOff(this.getId()).subscribe();
+    this.task.text = `Power Off VM: ${this.getId()}`;
+    this.task.timestamp = new Date().toISOString();
+    this.taskService.addTask(this.task);
   }
 
   onClickPowerReset() {
     this.vmService.powerReset(this.getId()).subscribe();
+    this.task.text = `Power Reset VM: ${this.getId()}`;
+    this.task.timestamp = new Date().toISOString();
+    this.taskService.addTask(this.task);
   }
 
   onClickDelete() {
     this.vmService.delete(this.getId()).subscribe();
+    this.task.text = `Delete VM: ${this.getId()}`;
+    this.task.timestamp = new Date().toISOString();
+    this.taskService.addTask(this.task);
   }
 
   isPoweredOn() {
