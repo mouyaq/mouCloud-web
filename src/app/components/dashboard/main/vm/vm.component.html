@@ -53,7 +53,7 @@
                     <button type="button" class="btn btn-primary vm-actions-btn" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-tv"></i> MKS1
                     </button>
-                    <button class="btn btn-light vm-actions-btn" onClick="window.open('/dashboard/vm/mks');"><span class="icon">MKS2</span></button>                        
+                    <button class="btn btn-light vm-actions-btn" (click)="showConsole()"><span class="icon">MKS2</span></button>                        
                     <button class="btn btn-danger vm-actions-btn" *ngIf="!isPoweredOn()" (click)="onClickDelete()"><i class="fa fa-trash"></i> Delete</button>   
                 </div>
             </div>

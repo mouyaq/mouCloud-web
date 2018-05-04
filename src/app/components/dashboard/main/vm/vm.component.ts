@@ -87,4 +87,15 @@ export class VmComponent implements OnInit, OnDestroy {
     return this.vm.power_state === 'POWERED_ON';
   }
 
+  showConsole() {
+    // this.router.navigate(['/dashboard/vm/mks']);
+    this.vmService.getConsoleUrl(this.getId()).subscribe(
+      url => {
+        console.log(`URL OBTENIDA: ${url}`);
+        window.open(`/assets/console.html?url=${url}`);
+      }
+    );
+    //window.open('/assets/console.html');
+  }
+
 }

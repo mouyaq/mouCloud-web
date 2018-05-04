@@ -138,4 +138,13 @@ export class VmService extends BaseApiService {
       });
   }
 
+  getConsoleUrl(id: string): Observable<Vm> {
+    return this.http.get<Vm>(`${VmService.VM_API}/${id}/console`)
+      .map(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(error => this.handleError(error));
+  }
+
 }
