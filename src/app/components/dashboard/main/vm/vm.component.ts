@@ -95,7 +95,16 @@ export class VmComponent implements OnInit, OnDestroy {
         window.open(`/assets/console.html?url=${url}`);
       }
     );
-    //window.open('/assets/console.html');
+  }
+
+  showConsolePython() {
+    // this.router.navigate(['/dashboard/vm/mks']);
+    this.vmService.getConsolePythonUrl(this.getId()).subscribe(
+      url => {
+        console.log(`URL OBTENIDA: ${url}`);
+        window.open(`/assets/console.html?url=${url}`);
+      }
+    );
   }
 
 }

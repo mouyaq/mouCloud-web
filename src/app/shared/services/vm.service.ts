@@ -147,4 +147,13 @@ export class VmService extends BaseApiService {
       .catch(error => this.handleError(error));
   }
 
+  getConsolePythonUrl(id: string): Observable<Vm> {
+    return this.http.get<Vm>(`${VmService.VM_API}/${id}/consolePython`)
+      .map(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(error => this.handleError(error));
+  }
+
 }
