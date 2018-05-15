@@ -5,6 +5,11 @@ button {
     width: 100%;
 }
 
+.os-icon {
+    height: 100%;
+    width: 100%;
+}
+
 .vm-info {
     margin: 20px 0;
     text-align: center;
@@ -20,7 +25,7 @@ button {
 }
 
 .vm-console {
-    background-color: #222;
+    /* background-color: #222; */
     display: none;
 }
 
