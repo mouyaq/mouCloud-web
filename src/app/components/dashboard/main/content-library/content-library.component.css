@@ -5,11 +5,11 @@ button {
     /* width: 100%; */
 }
 
-.card-library-item {
-    float: left;
-    height: 200px;
-    width: 200px;
-}
+/* .card {
+    max-height: 200px;
+    max-width: 200px;
+} */
+
 
 .library-info {
     margin: 20px 0;
@@ -17,6 +17,8 @@ button {
 }
 
 .library-name {
+    margin: 10px 10px;
+    width: 100%;
     color: #fff;
     text-align: center;
 }

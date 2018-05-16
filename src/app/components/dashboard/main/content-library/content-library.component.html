@@ -1,12 +1,12 @@
-<div class="card-columns" *ngIf="library">
+<div class="content-fluid library-name" *ngIf="library">
+    <h3>{{ library.name }}</h3>
+</div>
 
-    <div class="card card-library-item bg-secondary" *ngFor="let item of items">
-        <a href="{{ item.name }}" class="btn" *ngIf="isOvf(item)"><img class="card-img-top" src="/assets/img/icons/library/{{item.name}}.svg"></a>
-        <div class="card-body" *ngIf="isOvf(item)">
-            <!-- <h5 class="card-title library-name">{{ item.name }}</h5>
-            <p class="card-text">{{ item.description }}</p> -->
-            <!-- <a href="#" class="btn btn-primary">Deploy</a> -->
-        </div>
+<div class="card-columns"> 
+    <div class="card bg-secondary text-white" *ngFor="let item of items">
+        <a href="{{ item.name }}" *ngIf="isOvf(item)">
+            <h5 class="card-title library-name">{{ item.name }}</h5>
+            <img class="card-img-top library-item-img" src="/assets/img/icons/library/{{item.name}}.svg">
+        </a>
     </div>
-
 </div>
