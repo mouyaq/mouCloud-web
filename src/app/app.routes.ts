@@ -1,3 +1,4 @@
+import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
 import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
 import { MainComponent } from './components/dashboard/main/main.component';
@@ -63,6 +64,23 @@ export const routes: Routes = [
                         path: ':id',
                         canActivate: [IsAuthenticatedGuard],
                         component: HostComponent
+                    }
+                ]
+            },
+            {
+                path: 'library',
+                canActivate: [IsAuthenticatedGuard],
+                component: MainComponent
+            },
+            {
+                path: 'library',
+                canActivate: [IsAuthenticatedGuard],
+                component: MainComponent,
+                children: [
+                    {
+                        path: ':id',
+                        canActivate: [IsAuthenticatedGuard],
+                        component: ContentLibraryComponent
                     }
                 ]
             }

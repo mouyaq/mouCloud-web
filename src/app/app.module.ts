@@ -1,3 +1,4 @@
+import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { TaskService } from './shared/services/task.service';
 import { ResourcePoolService } from './shared/services/resource-pool.service';
 import { FolderService } from './shared/services/folder.service';
@@ -33,6 +34,7 @@ import { HostComponent } from './components/dashboard/main/host/host.component';
 import { FooterComponent } from './components/dashboard/footer/footer.component';
 import { VmCreateComponent } from './components/vm/vm-create/vm-create.component';
 import { VmMksComponent } from './components/vm/vm-mks/vm-mks.component';
+import { ContentLibraryService } from './shared/services/content-library.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { VmMksComponent } from './components/vm/vm-mks/vm-mks.component';
     HostComponent,
     FooterComponent,
     VmCreateComponent,
-    VmMksComponent
+    VmMksComponent,
+    ContentLibraryComponent
   ],
   imports: [
     NgbModule.forRoot(),
@@ -74,7 +77,8 @@ import { VmMksComponent } from './components/vm/vm-mks/vm-mks.component';
     TaskService,
     IsAuthenticatedGuard,
     VmDetailsResolverGuard,
-    HostDetailsResolverGuard
+    HostDetailsResolverGuard,
+    ContentLibraryService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { Library } from './../../../shared/model/library.model';
 import { Subscription } from 'rxjs/Subscription';
 import { InventoryService } from './../../../shared/services/inventory.service';
 import { Router } from '@angular/router';
@@ -7,6 +8,7 @@ import { Vm } from './../../../shared/model/vm.model';
 import { VmService } from './../../../shared/services/vm.service';
 import { SessionService } from './../../../shared/services/session.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ContentLibraryService } from './../../../shared/services/content-library.service';
 
 declare var $: any;
 
@@ -20,12 +22,15 @@ export class InventoryComponent implements OnInit, OnDestroy {
   vmsSubscription: Subscription;
   hosts: Array<Host>;
   hostsSubscription: Subscription;
+  libraries: Array<Library>;
+  librariesSubscription: Subscription;
 
   constructor(
     private router: Router,
     private sessionService: SessionService,
     private vmService: VmService,
-    private hostService: HostService
+    private hostService: HostService,
+    private contentLibraryService: ContentLibraryService
   ) { }
 
   ngOnInit() {
@@ -41,11 +46,18 @@ export class InventoryComponent implements OnInit, OnDestroy {
         this.vms = vms;
       });
 
+    this.contentLibraryService.list().subscribe();
+    this.librariesSubscription = this.contentLibraryService.onLibrariesChanges()
+      .subscribe(libraries => {
+        this.libraries = libraries;
+      });
+
   }
 
   ngOnDestroy() {
     this.vmsSubscription.unsubscribe();
     this.hostsSubscription.unsubscribe();
+    this.librariesSubscription.unsubscribe();
   }
 
   onClickHosts() {
@@ -54,6 +66,10 @@ export class InventoryComponent implements OnInit, OnDestroy {
 
   onClickVms() {
     this.router.navigate(['/dashboard/vm']);
+  }
+
+  onClickLibraries() {
+    this.router.navigate(['/dashboard/library']);
   }
 
 }
