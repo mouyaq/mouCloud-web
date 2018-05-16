@@ -12,7 +12,7 @@ import { Library } from '../model/library.model';
 
 @Injectable()
 export class ContentLibraryService extends BaseApiService {
-  protected static readonly VM_API = `${BaseApiService.BASE_API}/content/library/`;
+  protected static readonly LIBRARY_API = `${BaseApiService.BASE_API}/content/library/`;
 
   private library: Library;
   private libraries: Array<Library> = [];
@@ -32,7 +32,7 @@ export class ContentLibraryService extends BaseApiService {
 
 
   list(): Observable<Array<Library>> {
-    return this.http.get<Array<String>>(ContentLibraryService.VM_API)
+    return this.http.get<Array<String>>(ContentLibraryService.LIBRARY_API)
       .map(res => {
         return this.setLibraries(res);
       })
@@ -46,7 +46,7 @@ export class ContentLibraryService extends BaseApiService {
   }
 
   get(id: string): Observable<Library> {
-    return this.http.get<Library>(`${ContentLibraryService.VM_API}/${id}`)
+    return this.http.get<Library>(`${ContentLibraryService.LIBRARY_API}/${id}`)
       .map(res => {
         return this.setLibrary(res);
       })
@@ -54,7 +54,7 @@ export class ContentLibraryService extends BaseApiService {
   }
 
   getItem(id: string): Observable<LibraryItem> {
-    return this.http.get<LibraryItem>(`${ContentLibraryService.VM_API}/item/${id}`)
+    return this.http.get<LibraryItem>(`${ContentLibraryService.LIBRARY_API}/item/${id}`)
       .map(res => {
         return this.setLibraryItem(res);
       })
@@ -65,7 +65,7 @@ export class ContentLibraryService extends BaseApiService {
   }
 
   listLibraryItems(id: string): Observable<Array<LibraryItem>> {
-    return this.http.get<Array<String>>(`${ContentLibraryService.VM_API}/${id}/items`)
+    return this.http.get<Array<String>>(`${ContentLibraryService.LIBRARY_API}/${id}/items`)
       .map(res => {
         return this.setLibraryItems(res);
       })
