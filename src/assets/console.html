@@ -10,8 +10,58 @@
     <script type="text/javascript" src="/assets/js/jquery-ui.min.js"></script> 
     <script type="text/javascript" src="/assets/js/wmks.min.js" type="text/javascript"></script> 
 
-    
 
+    <div class="card-header row">
+        <div class="col-sm-10" id="title">VIRTUAL MACHINE</div>
+        <div id="fullscreen" class="btn btn-sm btn-link col" data-i18n-key="wmks.full.screen">Full Screen</div>
+    </div>
+
+
+    <div class="options-container">
+        <button id="ctrl-alt-del" class="btn btn-sm" data-i18n-key="wmks.ctrl.alt.del">Ctrl+Alt+Del</button>
+        <div class="dropdown bottom-right col-sm-4">
+            <button class="dropdown-toggle btn btn-sm" data-i18n-key="wmks.options">Options</button>
+            <div class="dropdown-menu">
+                <h4 class="dropdown-header" data-i18n-key="wmks.keyboard.layout">Keyboard Layout</h4>
+                <a href="#" class="language-action dropdown-item active" data-lang="en-US"><clr-icon class="check" shape="check"><svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>check</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M13.72,27.69,3.29,17.27a1,1,0,0,1,1.41-1.41l9,9L31.29,7.29a1,1,0,0,1,1.41,1.41Z"></path>
+                    </svg></clr-icon>English (US)
+                </a>
+                <a href="#" class="language-action dropdown-item" data-lang="es-ES"><clr-icon class="check" shape="check"><svg version="1.1" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>check</title>
+                    <path class="clr-i-outline clr-i-outline-path-1" d="M13.72,27.69,3.29,17.27a1,1,0,0,1,1.41-1.41l9,9L31.29,7.29a1,1,0,0,1,1.41,1.41Z"></path>
+                    </svg></clr-icon>Español
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-block" style="height: auto">
+        <div class="card-text">
+            <div id="wmksContainer" style="position:absolute;width:800px;height:600px"></div> 
+        </div>
+    </div>
+
+
+
+    
+    <!-- <div class="card text-center">
+        <div class="card-header">
+            VM NAME
+        </div>
+        <div class="card-body">
+            <div id="wmksContainer" style="position:absolute;width:800px;height:600px"></div> 
+        </div>
+        <div class="card-footer text-muted">
+            <a href="javascript:void(wmks.sendKeyCodes([17,18,46]))">send Ctrl+Alt+Del</a>
+            <a onClick="goFullScreen()" href="#">go full screen</a>
+            <a href="javascript:void(disconnect())">disconnect</a>
+            <a href="javascript:void(wkms.showKeyboard())">show keyboard</a>
+            <a href="javascript:void(wkms.hideKeyboard())">hide keyboard</a>
+        </div>
+    </div> -->
 
 
 
@@ -69,22 +119,5 @@
         //     console.log("Keyboard changed to: " + keyboardLayoutId);
 	    // });
     </script> 
-
-<div class="card text-center">
-        <div class="card-header">
-            VM NAME
-        </div>
-        <div class="card-body">
-            <div id="wmksContainer" style="position:absolute;width:800px;height:600px"></div> 
-        </div>
-        <div class="card-footer text-muted">
-            <a href="javascript:void(wmks.sendKeyCodes([17,18,46]))">send Ctrl+Alt+Del</a>
-            <a onClick="goFullScreen()" href="#">go full screen</a>
-            <a href="javascript:void(disconnect())">disconnect</a>
-            <a href="javascript:void(wkms.showKeyboard())">show keyboard</a>
-            <a href="javascript:void(wkms.hideKeyboard())">hide keyboard</a>
-        </div>
-    </div>
-    
 </body> 
 </html>
