@@ -1,14 +1,19 @@
 /* Extra small devices (portrait phones, less than 576px) */
 /* No media query since this is the default in Bootstrap */
+
 button {
     margin: 10px 0;
     /* width: 100%; */
 }
 
-/* .card {
-    max-height: 200px;
-    max-width: 200px;
-} */
+img {
+    width: 100px;
+}
+
+.card-img {
+    margin: 0 auto;
+    text-align: center;
+}
 
 
 .library-info {

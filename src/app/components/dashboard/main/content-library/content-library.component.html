@@ -6,7 +6,9 @@
     <div class="card bg-secondary text-white" *ngFor="let item of items">
         <a href="{{ item.name }}" *ngIf="isOvf(item)">
             <h5 class="card-title library-name">{{ item.name }}</h5>
-            <img class="card-img-top library-item-img" src="/assets/img/icons/library/{{item.name}}.svg">
+            <div class="card-img">
+                <img class="library-item-img" src="/assets/img/icons/library/{{item.name}}.svg">
+            </div>
         </a>
     </div>
 </div>
