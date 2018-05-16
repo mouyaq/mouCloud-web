@@ -1,3 +1,4 @@
+import { LibraryItem } from './../../../../shared/model/library-item.model';
 import { ContentLibraryService } from './../../../../shared/services/content-library.service';
 import { Library } from './../../../../shared/model/library.model';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,6 +16,8 @@ import { Task } from '../../../../shared/model/task.model';
 export class ContentLibraryComponent implements OnInit, OnDestroy {
   library: Library;
   librarySubscription: Subscription;
+  item: LibraryItem;
+  items: Array<LibraryItem> = [];
   error: Object;
   private task: Task = new Task();
   private date: Date = new Date();
@@ -30,7 +33,7 @@ export class ContentLibraryComponent implements OnInit, OnDestroy {
     this.routes
       .data
       .subscribe(data => {
-        this.library = data['LibraryDetailsResolverGuard'];
+        this.items = data['LibraryItemsResolverGuard'];
       });
 
     this.library = this.contentLibraryService.getLibrary();
@@ -49,6 +52,10 @@ export class ContentLibraryComponent implements OnInit, OnDestroy {
     const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
     const s: UrlSegment[] = g.segments;
     return s[2].path;
+  }
+
+  isOvf(item: LibraryItem): boolean {
+    return item.type === 'ovf';
   }
 
 }

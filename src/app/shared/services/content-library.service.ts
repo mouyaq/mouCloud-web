@@ -1,3 +1,4 @@
+import { LibraryItem } from './../model/library-item.model';
 import { Router } from '@angular/router';
 import { InventoryService } from './inventory.service';
 import { Subject } from 'rxjs/Rx';
@@ -15,8 +16,12 @@ export class ContentLibraryService extends BaseApiService {
 
   private library: Library;
   private libraries: Array<Library> = [];
+  private item: LibraryItem;
+  private items: Array<LibraryItem> = [];
   private librarySubject: Subject<Library> = new Subject();
   private librariesSubject: Subject<Array<Library>> = new Subject();
+  private libraryItemSubject: Subject<LibraryItem> = new Subject();
+  private libraryItemsSubject: Subject<Array<LibraryItem>> = new Subject();
 
   constructor(
     private http: HttpClient,
@@ -48,6 +53,26 @@ export class ContentLibraryService extends BaseApiService {
       .catch(error => this.handleError(error));
   }
 
+  getItem(id: string): Observable<LibraryItem> {
+    return this.http.get<LibraryItem>(`${ContentLibraryService.VM_API}/item/${id}`)
+      .map(res => {
+        return this.setLibraryItem(res);
+      })
+  }
+
+  listAllLibraryItems(): Observable<Array<LibraryItem>> {
+    return;
+  }
+
+  listLibraryItems(id: string): Observable<Array<LibraryItem>> {
+    return this.http.get<Array<String>>(`${ContentLibraryService.VM_API}/${id}/items`)
+      .map(res => {
+        return this.setLibraryItems(res);
+      })
+      .catch(error => this.handleError(error));
+
+  }
+
   getLibrary(): Library {
     return this.library;
   }
@@ -72,40 +97,13 @@ export class ContentLibraryService extends BaseApiService {
     this.librariesSubject.next(this.libraries);
   }
 
-  // private update(id: string) {
-  //   if (id !== null) {
-  //     this.get(id).subscribe(() => {
-  //       this.notifyVmChange();
-  //     });
-  //   }
-  //   this.list().subscribe(() => {
-  //     this.notifyVmsChanges();
-  //   });
-  // }
+  private notifyLibraryItemChange(): void {
+    this.libraryItemSubject.next(this.item);
+  }
 
-  // powerOn(id: string): Observable<string> {
-  //   return this.http.post(`${VmService.VM_API}/${id}/power/start`, null)
-  //     .map(() => {
-  //       return this.update(id);
-  //     })
-  //     .catch(error => this.handleError(error));
-  // }
-
-  // powerOff(id: string): Observable<string> {
-  //   return this.http.post(`${VmService.VM_API}/${id}/power/stop`, null)
-  //   .map(() => {
-  //     return this.update(id);
-  //   })
-  //   .catch(error => this.handleError(error));
-  // }
-
-  // powerReset(id: string): Observable<string> {
-  //   return this.http.post(`${VmService.VM_API}/${id}/power/reset`, null)
-  //   .map(() => {
-  //     return this.update(id);
-  //   })
-  //   .catch(error => this.handleError(error));
-  // }
+  private notifyLibraryItemsChange(): void {
+    this.libraryItemsSubject.next(this.items);
+  }
 
   setLibrary(library: Library): Library {
     this.library = library;
@@ -121,50 +119,28 @@ export class ContentLibraryService extends BaseApiService {
           this.libraries.push(lib);
         }
       );
-      // console.log('setLibraries: LIBRARY = ' + library);
-      // const libraryTmp = new Library();
-      // libraryTmp.id = library.toString();
-      // this.libraries.push(libraryTmp);
     });
-    //this.libraries = libraries;
     this.notifyLibrariesChanges();
     return this.libraries;
   }
 
-  // // returns "value": "vm-65"
-  // create(spec: VmSpec): Observable<Vm> {
-  //   return this.http.post(`${VmService.VM_API}`, spec)
-  //     .map((vm) => {
-  //       console.log(vm);
-  //       console.log(typeof(vm));
-  //       this.update(null);
-  //       return this.getVm();
-  //     });
-  // }
+  setLibraryItem(item: LibraryItem): LibraryItem {
+    this.item = item;
+    this.notifyLibraryItemChange();
+    return this.item;
+  }
 
-  // delete(id: string): Observable<void> {
-  //   return this.http.delete(`${VmService.VM_API}/${id}`)
-  //     .map(() => {
-  //       return this.update(null);
-  //     });
-  // }
-
-  // getConsoleUrl(id: string): Observable<Vm> {
-  //   return this.http.get<Vm>(`${VmService.VM_API}/${id}/console`)
-  //     .map(res => {
-  //       console.log(res);
-  //       return res;
-  //     })
-  //     .catch(error => this.handleError(error));
-  // }
-
-  // getConsolePythonUrl(id: string): Observable<Vm> {
-  //   return this.http.get<Vm>(`${VmService.VM_API}/${id}/consolePython`)
-  //     .map(res => {
-  //       console.log(res);
-  //       return res;
-  //     })
-  //     .catch(error => this.handleError(error));
-  // }
+  setLibraryItems(items: Array<String>): Array<LibraryItem> {
+    this.items = [];
+    items.forEach(item => {
+      this.getItem(item.toString()).subscribe(
+        it => {
+          this.items.push(it);
+        }
+      );
+    });
+    this.notifyLibraryItemsChange();
+    return this.items;
+  }
 
 }

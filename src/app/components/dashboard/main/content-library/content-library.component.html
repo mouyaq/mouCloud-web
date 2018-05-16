@@ -1,1 +1,18 @@
-<h3>CONTENT LIBRARY COMPONENT</h3>
+
+<div class="card bg-secondary library-info" *ngIf="library">
+
+    <div class="card-header">
+        <div class="row">
+            <div class="col-12 library-name">
+                <h5 id="library-name">{{ library.name }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body vm-panel">
+        <div *ngFor="let item of items">
+            <div class="item" *ngIf="isOvf(item)">{{ item.name }}</div>
+        </div>
+    </div>
+
+</div>

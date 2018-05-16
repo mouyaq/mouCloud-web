@@ -18,14 +18,13 @@ export class VmDetailsResolverGuard implements Resolve<Vm> {
           this.router.navigate(['/dashboard']);
           return Observable.of(error);
         });
-    }
-    else {
-      return this.vmService.get(route.params['id'])
-        .catch(error => {
-          this.router.navigate(['/dashboard']);
-          return Observable.of(error);
-        });
-    }
+    } else {
+        return this.vmService.get(route.params['id'])
+          .catch(error => {
+            this.router.navigate(['/dashboard']);
+            return Observable.of(error);
+          });
+      }
   }
 
 }

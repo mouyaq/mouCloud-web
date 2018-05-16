@@ -1,3 +1,4 @@
+import { LibraryItemsResolverGuard } from './shared/resolvers/library-items-resolver.guard';
 import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { TaskService } from './shared/services/task.service';
 import { ResourcePoolService } from './shared/services/resource-pool.service';
@@ -78,7 +79,8 @@ import { ContentLibraryService } from './shared/services/content-library.servic
     IsAuthenticatedGuard,
     VmDetailsResolverGuard,
     HostDetailsResolverGuard,
-    ContentLibraryService
+    ContentLibraryService,
+    LibraryItemsResolverGuard
   ],
   bootstrap: [AppComponent]
 })

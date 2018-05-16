@@ -1,3 +1,4 @@
+import { LibraryItemsResolverGuard } from './shared/resolvers/library-items-resolver.guard';
 import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
 import { VmDetailsResolverGuard } from './shared/resolvers/vm-details-resolver.guard';
@@ -80,6 +81,7 @@ export const routes: Routes = [
                     {
                         path: ':id',
                         canActivate: [IsAuthenticatedGuard],
+                        resolve: {LibraryItemsResolverGuard},
                         component: ContentLibraryComponent
                     }
                 ]

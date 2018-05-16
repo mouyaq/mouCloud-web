@@ -5,6 +5,16 @@ button {
     width: 100%;
 }
 
+.library-info {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.library-name {
+    color: #fff;
+    text-align: center;
+}
+
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) { 
 
