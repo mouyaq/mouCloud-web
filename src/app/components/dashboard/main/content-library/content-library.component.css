@@ -2,7 +2,13 @@
 /* No media query since this is the default in Bootstrap */
 button {
     margin: 10px 0;
-    width: 100%;
+    /* width: 100%; */
+}
+
+.card-library-item {
+    float: left;
+    height: 200px;
+    width: 200px;
 }
 
 .library-info {
