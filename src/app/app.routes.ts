@@ -1,3 +1,4 @@
+import { DeployItemComponent } from './components/dashboard/library/deploy-item/deploy-item.component';
 import { LibraryItemsResolverGuard } from './shared/resolvers/library-items-resolver.guard';
 import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { HostDetailsResolverGuard } from './shared/resolvers/host-details-resolver.guard';
@@ -78,6 +79,18 @@ export const routes: Routes = [
                 canActivate: [IsAuthenticatedGuard],
                 component: MainComponent,
                 children: [
+                    {
+                        path: 'deployItem',
+                        canActivate: [IsAuthenticatedGuard],
+                        component: DeployItemComponent,
+                        children: [
+                            {
+                                path: ':id',
+                                canActivate: [IsAuthenticatedGuard],
+                                component: DeployItemComponent
+                            }
+                        ]
+                    },
                     {
                         path: ':id',
                         canActivate: [IsAuthenticatedGuard],

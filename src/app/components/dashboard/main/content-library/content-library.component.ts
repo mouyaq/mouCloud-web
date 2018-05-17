@@ -58,4 +58,8 @@ export class ContentLibraryComponent implements OnInit, OnDestroy {
     return item.type === 'ovf';
   }
 
+  onClickItem(id: string): void {
+    this.router.navigate([`/dashboard/library/deployItem/${id}`]);
+  }
+
 }

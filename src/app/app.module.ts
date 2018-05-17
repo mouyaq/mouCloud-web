@@ -1,3 +1,4 @@
+import { DeployItemComponent } from './components/dashboard/library/deploy-item/deploy-item.component';
 import { LibraryItemsResolverGuard } from './shared/resolvers/library-items-resolver.guard';
 import { ContentLibraryComponent } from './components/dashboard/main/content-library/content-library.component';
 import { TaskService } from './shared/services/task.service';
@@ -51,7 +52,8 @@ import { ContentLibraryService } from './shared/services/content-library.servic
     FooterComponent,
     VmCreateComponent,
     VmMksComponent,
-    ContentLibraryComponent
+    ContentLibraryComponent,
+    DeployItemComponent
   ],
   imports: [
     NgbModule.forRoot(),

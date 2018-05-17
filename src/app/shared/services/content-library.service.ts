@@ -58,6 +58,7 @@ export class ContentLibraryService extends BaseApiService {
       .map(res => {
         return this.setLibraryItem(res);
       })
+      .catch(error => this.handleError(error));
   }
 
   listAllLibraryItems(): Observable<Array<LibraryItem>> {
@@ -70,7 +71,6 @@ export class ContentLibraryService extends BaseApiService {
         return this.setLibraryItems(res);
       })
       .catch(error => this.handleError(error));
-
   }
 
   getLibrary(): Library {

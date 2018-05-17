@@ -91,7 +91,6 @@ export class VmComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/dashboard/vm/mks']);
     this.vmService.getConsoleUrl(this.getId()).subscribe(
       url => {
-        console.log(`URL OBTENIDA: ${url}`);
         window.open(`/assets/console.html?url=${url}`);
       }
     );
@@ -101,7 +100,6 @@ export class VmComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/dashboard/vm/mks']);
     this.vmService.getConsolePythonUrl(this.getId()).subscribe(
       url => {
-        console.log(`URL OBTENIDA: ${url}`);
         window.open(`/assets/console.html?url=${url}`);
       }
     );
