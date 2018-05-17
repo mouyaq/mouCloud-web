@@ -124,8 +124,6 @@ export class VmService extends BaseApiService {
   create(spec: VmSpec): Observable<Vm> {
     return this.http.post(`${VmService.VM_API}`, spec)
       .map((vm) => {
-        console.log(vm);
-        console.log(typeof(vm));
         this.update(null);
         return this.getVm();
       });

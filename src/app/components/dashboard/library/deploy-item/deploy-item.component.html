@@ -1,1 +1,35 @@
-<h3>DEPLOY LIBRARY ITEM COMPONENT</h3>      
+<div class="library-item-form bg-secondary">
+
+  <form (ngSubmit)="onSubmit(newVmForm)" #newVmForm="ngForm">
+    <div class="form-group">
+      <div class="form-group">
+        <label for="host-select">Host:</label>
+        <select id="host-select" name="host" id="deploy-host" class="form-control" [(ngModel)]="item.host" required>
+          <option *ngFor="let host of hosts" value="{{ host.host }}">{{ host.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="datastore-select">Datastore:</label>
+        <select id="datastore-select" name="datastore" id="deploy-datastore" class="form-control" [(ngModel)]="item.datastore" required>
+          <option *ngFor="let datastore of datastores" value="{{ datastore.datastore}}">{{ datastore.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="folder-select">Folder:</label>
+        <select id="folder-select" name="folder" id="deploy-folder" class="form-control" [(ngModel)]="item.folder" required>
+          <option *ngFor="let folder of folders" value="{{ folder.folder}}">{{ folder.name }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="resource-pool-select">Resource Pool:</label>
+        <select id="resource-pool-select" name="resourcePool" id="deploy-resource-pool" class="form-control" [(ngModel)]="item.resourcePool" required>
+          <option *ngFor="let resourcePool of resourcePools" value="{{ resourcePool.resource_pool}}">{{ resourcePool.name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="submit" class="btn btn-success">Deploy</button>
+    </div>
+  </form> 
+
+</div>

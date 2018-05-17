@@ -1,3 +1,7 @@
+import { Item } from './../../../../shared/model/item.model';
+import { Router, UrlTree, PRIMARY_OUTLET, UrlSegmentGroup, UrlSegment } from '@angular/router';
+import { ContentLibraryService } from './../../../../shared/services/content-library.service';
+import { LibraryItemSpec } from './../../../../shared/model/libraryItemSpec.model';
 import { HostService } from './../../../../shared/services/host.service';
 import { Host } from './../../../../shared/model/host.model';
 import { TaskService } from './../../../../shared/services/task.service';
@@ -5,10 +9,7 @@ import { ResourcePoolService } from './../../../../shared/services/resource-pool
 import { ResourcePool } from './../../../../shared/model/resource-pool.model';
 import { Folder } from './../../../../shared/model/folder.model';
 import { Datastore } from './../../../../shared/model/datastore.model';
-import { Vm } from './../../../../shared/model/vm.model';
-import { VmService } from './../../../../shared/services/vm.service';
 import { Component, OnInit } from '@angular/core';
-import { VmSpec } from '../../../../shared/model/vmSpec.model';
 import { DatastoreService } from '../../../../shared/services/datastore.service';
 import { FolderService } from '../../../../shared/services/folder.service';
 import { Task } from '../../../../shared/model/task.model';
@@ -21,7 +22,7 @@ declare var $: any;
   styleUrls: ['./deploy-item.component.css']
 })
 export class DeployItemComponent implements OnInit {
-  vm: Vm = new Vm();
+  item: Item = new Item();
   datastores: Array<Datastore> = [];
   folders: Array<Folder> = [];
   resourcePools: Array<ResourcePool> = [];
@@ -30,7 +31,8 @@ export class DeployItemComponent implements OnInit {
   private date: Date = new Date();
 
   constructor(
-    private vmService: VmService,
+    private router: Router,
+    private contentLibraryService: ContentLibraryService,
     private datastoreService: DatastoreService,
     private folderService: FolderService,
     private resourcePoolService: ResourcePoolService,
@@ -60,33 +62,32 @@ export class DeployItemComponent implements OnInit {
       });
   }
 
-  onSubmit(newVmForm, modalID) {
-    const vmSpec = {
-      spec: {
-        name: this.vm.name,
-        guest_OS: this.vm.guest_OS,
-        placement: {
-          datastore: this.vm.datastore,
-          folder: this.vm.folder,
-          resource_pool: this.vm.resource_pool
-        },
-        cpu: {
-          count: this.vm.cpu_count
-        },
-        memory: {
-          size_MiB: this.vm.memory_MB
-        }
+  private getId() {
+    const urlTree: UrlTree = this.router.parseUrl(this.router.url);
+    const g: UrlSegmentGroup = urlTree.root.children[PRIMARY_OUTLET];
+    const s: UrlSegment[] = g.segments;
+    return s[3].path;
+  }
+
+  onSubmit(newVmForm) {
+    const itemSpec = {
+      deployment_spec: {
+        accept_all_EULA: true,
+        default_datastore_id: this.item.datastore,
+      },
+      target: {
+        folder_id: this.item.folder,
+        host_id: this.item.host,
+        resource_pool_id: this.item.resourcePool
       }
     };
-
-    this.vmService.create(vmSpec).subscribe(
-      (vm) => {
-        console.log(vm);
+console.log(JSON.stringify(itemSpec));
+    this.contentLibraryService.deployItem(this.getId(), itemSpec).subscribe(
+      (result) => {
+        console.log(result);
         newVmForm.reset();
-        $(modalID).modal('toggle');
-        // this.task.text = `Create VM: ${vm.name} with id ${vm.vm}`;
         this.task.id = this.taskService.assignTaskId();
-        this.task.text = 'VM Created';
+        this.task.text = 'Library item deployed';
         this.task.timestamp = new Date().toISOString();
         this.taskService.addTask(this.task);
       }

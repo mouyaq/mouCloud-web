@@ -1,3 +1,4 @@
+import { LibraryItemSpec } from './../model/libraryItemSpec.model';
 import { LibraryItem } from './../model/library-item.model';
 import { Router } from '@angular/router';
 import { InventoryService } from './inventory.service';
@@ -59,6 +60,10 @@ export class ContentLibraryService extends BaseApiService {
         return this.setLibraryItem(res);
       })
       .catch(error => this.handleError(error));
+  }
+
+  deployItem(id: string, itemSpec: LibraryItemSpec): Observable<any> {
+    return this.http.post(`${ContentLibraryService.LIBRARY_API}/deployItem/${id}`, itemSpec);
   }
 
   listAllLibraryItems(): Observable<Array<LibraryItem>> {
