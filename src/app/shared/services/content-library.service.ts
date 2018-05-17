@@ -12,7 +12,7 @@ import { Library } from '../model/library.model';
 
 @Injectable()
 export class ContentLibraryService extends BaseApiService {
-  protected static readonly LIBRARY_API = `${BaseApiService.BASE_API}/content/library/`;
+  protected static readonly LIBRARY_API = `${BaseApiService.BASE_API}/content/library`;
 
   private library: Library;
   private libraries: Array<Library> = [];
